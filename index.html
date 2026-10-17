@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopBill - fast billing for small shops</title>
+<meta name="description" content="ShopBill: type a few numbers to make a bill. Commission for every employee, customer credit, expenses, reports and printing. Offline, for Windows and Android.">
+<style>
+  :root { --bg:#f4f6fb; --card:#ffffff; --ink:#0f1a2b; --muted:#5a6578; --brand:#0f766e; --brand2:#14b8a6; --line:#e3e8f0; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0a0d14; --card:#121722; --ink:#eef2f8; --muted:#9aa6b8; --brand:#2dd4bf; --brand2:#14b8a6; --line:#222b3a; } }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+  header.hero { background: linear-gradient(135deg, #0f766e, #0ea5e9); color:#fff; padding: 56px 0 64px; }
+  header.hero h1 { margin:0 0 8px; font-size: clamp(32px, 6vw, 48px); letter-spacing:-0.02em; }
+  header.hero p { margin:0 0 24px; font-size: clamp(16px, 2.6vw, 20px); max-width: 640px; opacity:.95; }
+  .btn { display:inline-block; background:#fff; color:#0f766e; font-weight:700; text-decoration:none; padding: 12px 22px; border-radius: 12px; margin: 0 10px 10px 0; }
+  .btn.alt { background: rgba(255,255,255,.16); color:#fff; border:1px solid rgba(255,255,255,.5); }
+  main { padding: 36px 0 48px; }
+  .grid { display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px; }
+  .card h3 { margin:0 0 6px; font-size:17px; }
+  .card p { margin:0; color:var(--muted); font-size:15px; }
+  h2 { margin: 36px 0 14px; font-size: 24px; }
+  code.k { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:2px 8px; }
+  footer { color:var(--muted); font-size:14px; padding: 8px 0 40px; }
+  a { color: var(--brand); }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <h1>ShopBill</h1>
+    <p>Type a few numbers to make a bill. Commission for every employee, customer credit, expenses, reports and printing, fully offline.</p>
+    <a class="btn" href="https://github.com/Abdul-Hamid-k/shopbill/releases/latest">Download</a>
+    <a class="btn alt" href="https://github.com/Abdul-Hamid-k/shopbill#install">How to install</a>
+  </div>
+</header>
+<main class="wrap">
+  <h2>Made for the counter</h2>
+  <div class="grid">
+    <div class="card"><h3>Bill in seconds</h3><p>Who sold it, what it was, how much: <code class="k">1 Enter 2 Enter 1450 Enter</code>. A big number pad on phones.</p></div>
+    <div class="card"><h3>Employee commission</h3><p>Rates, targets and bonus; worked out from the bills and paid with a slip. Returns reduce it fairly.</p></div>
+    <div class="card"><h3>Credit (udhaar)</h3><p>Know who owes what and since when. Take old dues while billing, send reminders on WhatsApp.</p></div>
+    <div class="card"><h3>Expenses and reports</h3><p>Daily cash after expenses, sales by employee and item type, GST, downloads in Excel, PDF and CSV.</p></div>
+    <div class="card"><h3>Works offline, stays private</h3><p>No internet needed. Your data is encrypted on the device, with password-protected backups.</p></div>
+    <div class="card"><h3>Six languages</h3><p>English, Hindi, Marathi, Gujarati, Tamil and Telugu, in the app and on the printed bill.</p></div>
+  </div>
+  <h2>Windows and Android</h2>
+  <p>Download the installer or the APK from the <a href="https://github.com/Abdul-Hamid-k/shopbill/releases/latest">latest release</a>. Every new shop gets a 15-day free trial.</p>
+  <p><strong>Preview:</strong> current builds are for testers. Please do not rely on them for real business records yet.</p>
+</main>
+<footer class="wrap">ShopBill &middot; <a href="https://github.com/Abdul-Hamid-k/shopbill/releases">Releases</a></footer>
+</body>
+</html>
