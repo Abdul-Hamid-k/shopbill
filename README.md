@@ -20,4 +20,4 @@ Current builds are **preview versions** for testers. Please do not rely on a pre
 
 ## Website
 
-`index.html` is a one-page marketing site (features, devices, downloads, pricing, FAQ, support). The version, date, file sizes, checksums and links in its Downloads section come from one block of release data inside the page. After publishing a release, run `node tools/update-website.mjs` in the private app repository to refresh that block, then commit and push this repository.
+This repository holds the **built** marketing site (`index.html` and its images), copied here from the private source repository `shopbill-web`. Do not edit the files here by hand and never add source code: change the source, run `npm run publish-site` there, then commit and push this repository.
