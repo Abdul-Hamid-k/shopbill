@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ShopBill - fast billing for small shops</title>
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
+<link rel="apple-touch-icon" href="logo-192.png">
+<meta property="og:title" content="ShopBill - fast billing for small shops">
+<meta property="og:image" content="logo-192.png">
 <meta name="description" content="ShopBill: type a few numbers to make a bill. Commission for every employee, customer credit, expenses, reports and printing. Offline, for Windows and Android.">
 <style>
   :root { --bg:#f4f6fb; --card:#ffffff; --ink:#0f1a2b; --muted:#5a6578; --brand:#0f766e; --brand2:#14b8a6; --line:#e3e8f0; }
@@ -12,7 +16,9 @@
   body { margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
   .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
   header.hero { background: linear-gradient(135deg, #0f766e, #0ea5e9); color:#fff; padding: 56px 0 64px; }
-  header.hero h1 { margin:0 0 8px; font-size: clamp(32px, 6vw, 48px); letter-spacing:-0.02em; }
+  header.hero .brand { display:flex; align-items:center; gap:16px; margin:0 0 8px; }
+  header.hero .brand img { width:56px; height:56px; border-radius:14px; flex:none; }
+  header.hero h1 { margin:0; font-size: clamp(32px, 6vw, 48px); letter-spacing:-0.02em; }
   header.hero p { margin:0 0 24px; font-size: clamp(16px, 2.6vw, 20px); max-width: 640px; opacity:.95; }
   .btn { display:inline-block; background:#fff; color:#0f766e; font-weight:700; text-decoration:none; padding: 12px 22px; border-radius: 12px; margin: 0 10px 10px 0; }
   .btn.alt { background: rgba(255,255,255,.16); color:#fff; border:1px solid rgba(255,255,255,.5); }
@@ -30,7 +36,7 @@
 <body>
 <header class="hero">
   <div class="wrap">
-    <h1>ShopBill</h1>
+    <div class="brand"><img src="logo-128.png" width="56" height="56" alt="ShopBill logo"><h1>ShopBill</h1></div>
     <p>Type a few numbers to make a bill. Commission for every employee, customer credit, expenses, reports and printing, fully offline.</p>
     <a class="btn" href="https://github.com/Abdul-Hamid-k/shopbill/releases/latest">Download</a>
     <a class="btn alt" href="https://github.com/Abdul-Hamid-k/shopbill#install">How to install</a>
