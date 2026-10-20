@@ -151,11 +151,6 @@
   details summary { cursor:pointer; font-weight:700; }
   details p { margin:10px 0 2px; color:var(--muted); }
 
-  footer { background:var(--card); border-top:1px solid var(--line); padding:64px 0 72px; font-size:15px; color:var(--muted); }
-  footer .cols { display:grid; gap:24px; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); }
-  footer h3 { font-size:15px; color:var(--ink); }
-  footer ul { list-style:none; padding:0; margin:0; }
-  footer li { margin:5px 0; }
   .alt { background:#f8f7fe; }
 
   /* polish */
@@ -224,6 +219,26 @@
   .three { margin-top:48px; }
   .three .card { padding:32px; }
   .three .card h3 { margin-bottom:12px; }
+
+  /* footer */
+  footer { background:#17143f; color:#c9c6ee; padding:80px 0 0; font-size:15px; }
+  .f-grid { display:grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap:48px; padding-bottom:64px; }
+  .f-logo { display:flex; align-items:center; gap:12px; color:#fff; font-weight:800; font-size:24px; text-decoration:none; margin-bottom:16px; }
+  .f-logo img { width:44px; height:44px; border-radius:11px; }
+  .f-brand p { margin:0 0 24px; max-width:340px; line-height:1.7; }
+  .f-actions { display:flex; flex-wrap:wrap; gap:12px; }
+  .f-col h3 { color:#fff; font-size:14px; text-transform:uppercase; letter-spacing:.08em; margin:6px 0 20px; }
+  .f-col ul { list-style:none; margin:0; padding:0; }
+  .f-col li { margin:0 0 14px; }
+  .f-col a { color:#c9c6ee; text-decoration:none; transition:color .15s, padding-left .15s; }
+  .f-col a:hover { color:#fff; padding-left:4px; }
+  footer .btn.small { padding:10px 18px; }
+  .f-bottom { border-top:1px solid rgba(255,255,255,.14); display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; padding:26px 0 32px; font-size:14px; }
+  .f-bottom a { color:#c9c6ee; text-decoration:none; }
+  .f-bottom a:hover { color:#fff; }
+  footer a:focus-visible { outline-color:#ffb3a8; }
+  @media (max-width: 900px) { .f-grid { grid-template-columns: 1fr 1fr; gap:40px; } .f-brand { grid-column:1 / -1; } }
+  @media (max-width: 520px) { .f-grid { grid-template-columns: 1fr; } footer { padding-top:56px; } }
 </style>
 </head>
 <body>
@@ -548,11 +563,33 @@
 </main>
 
 <footer>
-  <div class="wrap cols">
-    <div><h3>ShopBill</h3><p>Billing for textile and garment shops. Windows and Android.</p></div>
-    <div><h3>Get it</h3><ul><li><a href="#downloads">Downloads and manual</a></li><li><a href="#pricing">Pricing</a></li><li><a href="https://github.com/Abdul-Hamid-k/shopbill/releases">All releases</a></li></ul></div>
-    <div><h3>Contact</h3><ul><li><a href="https://wa.me/917999863081">Message us on WhatsApp</a></li><li><a href="mailto:Abdulhamidk0172@gmail.com">Send us an email</a></li></ul></div>
-    <div><h3>Privacy</h3><p><a href="#privacy">How your data is handled</a></p></div>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <a class="f-logo" href="#top"><img src="logo-128.png" width="44" height="44" alt="">ShopBill</a>
+        <p>Fast billing for textile and garment shops. Works offline on Windows and Android.</p>
+        <div class="f-actions">
+          <a class="btn light small" href="#downloads">Download free</a>
+          <a class="btn light ghost small" href="https://wa.me/917999863081?text=Hello%2C%20I%20need%20help%20with%20ShopBill.">WhatsApp us</a>
+        </div>
+      </div>
+      <div class="f-col" role="group" aria-label="Product">
+        <h3>Product</h3>
+        <ul><li><a href="#features">Features</a></li><li><a href="#devices">Devices</a></li><li><a href="#how">How it works</a></li><li><a href="#pricing">Pricing</a></li></ul>
+      </div>
+      <div class="f-col" role="group" aria-label="Download and learn">
+        <h3>Download and learn</h3>
+        <ul><li><a href="#downloads">Downloads</a></li><li><a href="#downloads">User manual</a></li><li><a href="https://github.com/Abdul-Hamid-k/shopbill/releases">Release notes</a></li><li><a href="#faq">Questions</a></li></ul>
+      </div>
+      <div class="f-col" role="group" aria-label="Support">
+        <h3>Support</h3>
+        <ul><li><a href="https://wa.me/917999863081">Message us on WhatsApp</a></li><li><a href="mailto:Abdulhamidk0172@gmail.com">Send us an email</a></li><li><a href="#privacy">Your privacy</a></li></ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© 2026 ShopBill. All rights reserved.</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
   </div>
 </footer>
 
