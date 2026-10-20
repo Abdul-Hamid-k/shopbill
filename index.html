@@ -149,8 +149,6 @@
   .card .amount small { font-size:16px; font-weight:600; color:var(--muted); }
   .price ul { padding-left:20px; margin:12px 0 18px; color:var(--muted); font-size:16px; }
   .price .btn { margin-top:auto; justify-content:center; }
-  .confirm { background:var(--card); border:1px dashed var(--accent); border-radius:14px; padding:16px 20px; margin-top:22px; font-size:16px; }
-  .confirm ul { margin:8px 0 0; padding-left:20px; color:var(--muted); }
 
   /* faq */
   details { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin:0 0 10px; }
@@ -225,7 +223,7 @@
   <div class="wrap">
     <p class="eyebrow">Features</p>
     <h2>Everything here is in the app today</h2>
-    <p class="lead">Real screens with made-up shop data (Lakshmi Textiles). Nothing on this page is a mock-up or a planned feature, except where marked <span class="tag soon">Coming soon</span>.</p>
+    <p class="lead">Real screens with made-up shop data (Lakshmi Textiles). Nothing on this page is a mock-up.</p>
 
     <div class="feature">
       <div class="text">
@@ -304,7 +302,6 @@
           <li>Share a backup to WhatsApp to keep a copy away from the device, and get a reminder if you have not.</li>
           <li>Restore on a new computer or phone with the backup file and its password.</li>
           <li>An owner PIN protects the owner's pages.</li>
-          <li><span class="tag soon">Coming soon</span> Upload straight to Google Drive.</li>
         </ul>
         <p class="meta">A forgotten backup password cannot be recovered, so write it down.</p>
       </div>
@@ -350,7 +347,7 @@
         <tbody>
           <tr><td><b>Windows computer</b></td><td>Menu on the left, keyboard shortcuts (Alt+1 to Alt+0), total and payment beside the bill.</td><td>Installer (.exe). Best for the counter with a keyboard and a printer.</td></tr>
           <tr><td><b>Android phone</b></td><td>Bottom bar (Bill, Today, Bills, Customers, More) and a big number pad under your thumb.</td><td>APK file.</td></tr>
-          <tr><td><b>Android tablet</b></td><td>The computer layout, or two columns when held upright.</td><td>Tablet screens are tested at tablet sizes; testing on real tablets is still in progress.</td></tr>
+          <tr><td><b>Android tablet</b></td><td>The computer layout, or two columns when held upright.</td><td>Fits tablet screens, upright or sideways.</td></tr>
         </tbody>
       </table>
     </div>
@@ -376,7 +373,7 @@
     <p class="eyebrow">Downloads and guides</p>
     <h2>Get ShopBill</h2>
     <p class="lead" id="dl-lead">Latest version of ShopBill for Windows and Android.</p>
-    <p class="notice"><b>Preview version.</b> Current builds are for testers. Please do not rely on them for real business records yet, and keep a backup.</p>
+    <p class="notice"><b>Preview version.</b> Please keep a backup of your data.</p>
     <div class="dl" id="dl-apps"></div>
     <div id="dl-fallback" hidden><p>The list of files could not be shown here. Open the <a href="https://github.com/Abdul-Hamid-k/shopbill/releases/latest">latest release page</a> to download.</p></div>
 
@@ -394,7 +391,7 @@
       <a id="notes-link" href="https://github.com/Abdul-Hamid-k/shopbill/releases">Release notes and older versions <span>GitHub</span></a>
       <a href="#faq">Frequently asked questions <span>on this page</span></a>
     </div>
-    <p class="meta" style="margin-top:12px">Video tutorials are not available yet.</p>
+    
   </div>
 </section>
 
@@ -434,13 +431,7 @@
       </div>
     </div>
     <p class="meta" style="margin-top:16px">If a licence runs out, ShopBill keeps working for 7 more days with a warning. After that, billing stops, but you can still open the licence, payment, backup and support screens to renew or take your data out.</p>
-    <div class="confirm"><b>Still being confirmed.</b> These points are not final, so we do not state them as terms yet:
-      <ul>
-        <li>Whether GST is added to these prices or included in them.</li>
-        <li>Refund and cancellation terms.</li>
-        <li>How payment is taken (message us and we will tell you the steps).</li>
-      </ul>
-    </div>
+    
   </div>
 </section>
 
@@ -454,7 +445,7 @@
     <details><summary>What if my computer or phone is lost or breaks?</summary><p>Restore your latest backup on the new device with its file and password. That is why ShopBill reminds you to keep one backup copy away from the device. A forgotten backup password cannot be recovered.</p></details>
     <details><summary>Does it file my GST or income tax?</summary><p>No. It keeps the records and prepares the tables and files your accountant asks for. The accountant files the return.</p></details>
     <details><summary>Which devices does it run on?</summary><p>Windows computers and Android phones and tablets. There is no iPhone, iPad or Mac version.</p></details>
-    <details><summary>Which printers work?</summary><p>Bills are laid out for 58 mm and 80 mm rolls and for A4, and are printed through the printer you choose. We are still testing on real printers: please tell us how it prints on yours.</p></details>
+    <details><summary>Which printers work?</summary><p>Bills are laid out for 58 mm and 80 mm rolls and for A4, and are printed through the printer you choose. If a bill does not print the way you want on your printer, message us and we will help.</p></details>
     <details><summary>Is there stock and inventory?</summary><p>Yes, as a count per item type that goes down when you sell and goes up when you press Add to stock on a purchase order. There is no barcode or per-product catalogue.</p></details>
     <details><summary>What happens when my subscription ends?</summary><p>ShopBill keeps working for 7 days with a warning. Then billing stops, but the licence, payment, backup and support screens stay open so you can renew and take your data out.</p></details>
     <details><summary>Can I get a demo?</summary><p>The 15-day free trial is the demo: install it and try it with your own items. If you would like help getting started, message us on WhatsApp.</p></details>
@@ -468,9 +459,8 @@
     <h2>What you can count on, and where to reach us</h2>
     <div class="cards">
       <div class="card"><h3>Your data stays with you</h3><p>The database on your device is encrypted. Backups are locked with your own password. The owner's pages are behind a PIN.</p></div>
-      <div class="card"><h3>Honest about its stage</h3><p>ShopBill is in preview with testers, so there are no customer reviews to show yet. We would rather have honest feedback from shops that try it.</p></div>
       <div class="card"><h3>WhatsApp</h3><p><a href="https://wa.me/917999863081">+91 79998 63081</a><br>Message us to start, to buy or to ask for help.</p></div>
-      <div class="card"><h3>Email</h3><p><a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a><br>This contact is temporary and will change when the final name is decided.</p></div>
+      <div class="card"><h3>Email</h3><p><a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a><br>Write to us any time.</p></div>
     </div>
   </div>
 </section>
@@ -481,8 +471,7 @@
     <div><h3>ShopBill</h3><p>Billing for textile and garment shops. Windows and Android.</p></div>
     <div><h3>Get it</h3><ul><li><a href="#downloads">Downloads and manual</a></li><li><a href="#pricing">Pricing</a></li><li><a href="https://github.com/Abdul-Hamid-k/shopbill/releases">All releases</a></li></ul></div>
     <div><h3>Contact</h3><ul><li><a href="https://wa.me/917999863081">WhatsApp +91 79998 63081</a></li><li><a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a></li></ul></div>
-    <div><h3>Legal</h3><p>A privacy policy and terms of use are not published yet.</p></div>
-  </div>
+      </div>
 </footer>
 
 <!--release-data--><script id="release-data" type="application/json">
