@@ -6,6 +6,9 @@
 <title>ShopBill: fast billing for textile and garment shops</title>
 <meta name="description" content="ShopBill is a billing app for textile and garment shops on Windows and Android. Make a bill in seconds, track customer credit, work out staff commission, record purchases and keep reports. Works offline. 15-day free trial.">
 <meta name="theme-color" content="#4f46e5">
+<meta name="robots" content="index, follow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preload" as="image" href="images/laptop-bill.webp" type="image/webp" fetchpriority="high">
 <meta name="color-scheme" content="light">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
 <link rel="apple-touch-icon" href="logo-192.png">
@@ -30,7 +33,7 @@
 <style>
   :root {
     --bg:#ffffff; color-scheme:light; --card:#ffffff; --ink:#14122b; --muted:#555a70; --line:#e8e6f4;
-    --brand:#4f46e5; --brand-d:#3730a3; --brand-soft:#ede9fe; --accent:#e8523f; --ok:#0f766e;
+    --brand:#4f46e5; --brand-d:#3730a3; --brand-soft:#ede9fe; --accent:#d03f2b; --ok:#0f766e;
     --hero1:#2b2579; --hero2:#4f46e5; --shadow:0 10px 30px rgba(49,46,129,.12);
   }
   * { box-sizing: border-box; }
@@ -76,8 +79,8 @@
 
   /* hero */
   .hero { background: linear-gradient(135deg, var(--hero1), var(--hero2)); color:#fff; padding: 88px 0 104px; overflow:hidden; }
-  .hero .grid { display:grid; grid-template-columns: 1.05fr 1fr; gap:40px; align-items:center; }
-  .hero h1 { font-size: clamp(34px, 5.4vw, 56px); line-height:1.08; letter-spacing:-.03em; margin:0 0 16px; }
+  .hero .grid { display:grid; grid-template-columns: 0.9fr 1.1fr; gap:48px; align-items:center; }
+  .hero h1 { font-size: clamp(34px, 4.8vw, 52px); line-height:1.08; letter-spacing:-.03em; margin:0 0 16px; }
   .hero p { font-size: clamp(17px, 2.2vw, 20px); opacity:.95; margin:0 0 26px; max-width:560px; }
   .hero .small { font-size:15px; opacity:.85; margin:16px 0 0; }
   .shotstack { position:relative; padding-bottom:6%; }
@@ -104,7 +107,6 @@
   .shot figcaption { color:var(--muted); font-size:14px; padding:8px 6px 2px; }
   @media (max-width: 860px) { .feature { grid-template-columns:1fr; gap:18px; } .feature.flip .text { order:0; } }
   .tag { display:inline-block; font-size:12px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:3px 9px; border-radius:99px; background:var(--brand-soft); color:var(--brand-d); margin:0 6px 6px 0; }
-  .tag.soon { background:#fff3cd; color:#7a5800; }
 
   /* flow */
   .flow { display:grid; gap:20px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin-top:10px; }
@@ -130,8 +132,6 @@
   /* downloads */
   .dl { display:grid; gap:24px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
   .meta { color:var(--muted); font-size:14px; margin:6px 0 12px; }
-  .sha { font-family: ui-monospace, Consolas, monospace; font-size:12px; word-break:break-all; color:var(--muted); margin-top:10px; }
-  .install { font-size:15px; color:var(--muted); margin:10px 0 0; }
   .res { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); margin-top:12px; }
   .res a { display:flex; justify-content:space-between; gap:10px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; text-decoration:none; font-weight:600; }
 
@@ -266,6 +266,30 @@
   .dl .dfacts span { color:var(--muted); }
   .dl .dfacts b { font-weight:600; text-align:right; }
   .dl .dcard .btn { margin-top:auto; justify-content:center; width:100%; }
+
+  /* review pass */
+  picture { display:contents; }
+  nav a[aria-current="true"] { background:var(--brand-soft); color:var(--brand-d); }
+  .strip ul { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { .strip ul { grid-template-columns: repeat(2, 1fr); gap:24px 14px; } .price { grid-template-columns:1fr; } }
+  @media (min-width: 901px) { .price { grid-template-columns: repeat(3, 1fr); } }
+  .res { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 1000px) { .res { grid-template-columns: 1fr; } .res.more { grid-template-columns: 1fr; } }
+  .res.more { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 1000px) { .res.more { grid-template-columns: 1fr; } }
+  .shot img, .shotstack .laptop { cursor: zoom-in; }
+  dialog#lb { border:0; padding:0; background:transparent; max-width:96vw; max-height:94vh; overflow:visible; }
+  dialog#lb::backdrop { background:rgba(12,10,40,.82); }
+  dialog#lb img { max-width:96vw; max-height:92vh; width:auto; height:auto; border-radius:12px; background:#fff; box-shadow:0 20px 60px rgba(0,0,0,.5); cursor:zoom-out; }
+  dialog#lb button { position:absolute; top:-14px; right:-14px; width:40px; height:40px; border-radius:50%; border:0; background:#fff; color:#14122b; font-size:24px; line-height:1; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.35); }
+  @media print {
+    header.top, .cta, .menu-btn, dialog, footer .f-actions, .skip { display:none !important; }
+    body { background:#fff; font-size:12pt; }
+    section { padding:24px 0; break-inside:avoid-page; }
+    .hero, .alt { background:#fff !important; color:#000 !important; }
+    .hero h1, .hero p { color:#000 !important; }
+    a { color:#000; text-decoration:underline; }
+  }
 </style>
 </head>
 <body>
@@ -304,8 +328,8 @@
       <ul class="chips"><li>Works offline</li><li>Windows and Android</li><li>6 languages</li><li>15-day free trial</li></ul>
     </div>
     <div class="shotstack">
-      <img class="laptop" src="images/laptop-bill.jpg" width="1400" height="875" alt="ShopBill on a computer: a bill with two items and the total on the right, with cash, UPI, card, split and credit buttons">
-      <img class="phone" src="images/phone-bill.jpg" width="500" height="1044" alt="ShopBill on a phone with the big number pad" loading="eager">
+      <picture><source srcset="images/laptop-bill.webp" type="image/webp"><img class="laptop" src="images/laptop-bill.jpg" width="1400" height="875" alt="ShopBill on a computer: a bill with two items and the total on the right, with cash, UPI, card, split and credit buttons" fetchpriority="high"></picture>
+      <picture><source srcset="images/phone-bill.webp" type="image/webp"><img class="phone" src="images/phone-bill.jpg" width="500" height="1044" alt="ShopBill on a phone with the big number pad" loading="eager"></picture>
     </div>
   </div>
 </div>
@@ -351,7 +375,7 @@
           <li>Send a bill on WhatsApp from the device.</li>
         </ul>
       </div>
-      <figure class="shot win"><img src="images/laptop-bill.jpg" width="1400" height="875" loading="lazy" alt="Billing page with a bill of two dress items and total of 2,900 rupees"><figcaption>Billing on a computer.</figcaption></figure>
+      <figure class="shot win"><picture><source srcset="images/laptop-bill.webp" type="image/webp"><img src="images/laptop-bill.jpg" width="1400" height="875" loading="lazy" alt="Billing page with a bill of two dress items and total of 2,900 rupees" decoding="async"></picture><figcaption>Billing on a computer.</figcaption></figure>
     </div>
 
     <div class="feature flip">
@@ -365,7 +389,7 @@
         </ul>
         <p class="meta">ShopBill keeps the records and prepares the tables. It does not file GST or income tax: your accountant does that.</p>
       </div>
-      <figure class="shot win"><img src="images/laptop-today.jpg" width="1400" height="875" loading="lazy" alt="Today page with sales so far, cash, UPI, card and credit totals and the latest bills"><figcaption>Today: sales, how people paid, cash after expenses.</figcaption></figure>
+      <figure class="shot win"><picture><source srcset="images/laptop-today.webp" type="image/webp"><img src="images/laptop-today.jpg" width="1400" height="875" loading="lazy" alt="Today page with sales so far, cash, UPI, card and credit totals and the latest bills" decoding="async"></picture><figcaption>Today: sales, how people paid, cash after expenses.</figcaption></figure>
     </div>
 
     <div class="feature">
@@ -377,7 +401,7 @@
           <li>Record a payment against old dues, and take dues while billing.</li>
         </ul>
       </div>
-      <figure class="shot win"><img src="images/laptop-customers.jpg" width="1400" height="875" loading="lazy" alt="Customers page showing 21,972 rupees owed by 11 customers"><figcaption>Who owes you, and since when.</figcaption></figure>
+      <figure class="shot win"><picture><source srcset="images/laptop-customers.webp" type="image/webp"><img src="images/laptop-customers.jpg" width="1400" height="875" loading="lazy" alt="Customers page showing 21,972 rupees owed by 11 customers" decoding="async"></picture><figcaption>Who owes you, and since when.</figcaption></figure>
     </div>
 
     <div class="feature flip">
@@ -390,7 +414,7 @@
           <li>Mark attendance on its own page.</li>
         </ul>
       </div>
-      <figure class="shot win"><img src="images/laptop-staff.jpg" width="1400" height="875" loading="lazy" alt="Staff page with each employee's sales, share of sales and commission"><figcaption>Commission worked out from the bills.</figcaption></figure>
+      <figure class="shot win"><picture><source srcset="images/laptop-staff.webp" type="image/webp"><img src="images/laptop-staff.jpg" width="1400" height="875" loading="lazy" alt="Staff page with each employee's sales, share of sales and commission" decoding="async"></picture><figcaption>Commission worked out from the bills.</figcaption></figure>
     </div>
 
     <div class="feature">
@@ -405,7 +429,7 @@
         </ul>
         <p class="meta">Stock is a count per item type, and you choose which types to track. It is not a barcode or per-product inventory system.</p>
       </div>
-      <figure class="shot win"><img src="images/laptop-purchases.jpg" width="1400" height="875" loading="lazy" alt="A purchase order from a supplier with stages Order Placed, Received and Stock Added"><figcaption>A purchase order, from order to stock.</figcaption></figure>
+      <figure class="shot win"><picture><source srcset="images/laptop-purchases.webp" type="image/webp"><img src="images/laptop-purchases.jpg" width="1400" height="875" loading="lazy" alt="A purchase order from a supplier with stages Order Placed, Received and Stock Added" decoding="async"></picture><figcaption>A purchase order, from order to stock.</figcaption></figure>
     </div>
 
     <div class="feature flip">
@@ -419,7 +443,7 @@
         </ul>
         <p class="meta">A forgotten backup password cannot be recovered, so write it down.</p>
       </div>
-      <figure class="shot win"><img src="images/laptop-backup.jpg" width="1400" height="875" loading="lazy" alt="Backup and restore settings with automatic backup options and a share button"><figcaption>Backup and restore.</figcaption></figure>
+      <figure class="shot win"><picture><source srcset="images/laptop-backup.webp" type="image/webp"><img src="images/laptop-backup.jpg" width="1400" height="875" loading="lazy" alt="Backup and restore settings with automatic backup options and a share button" decoding="async"></picture><figcaption>Backup and restore.</figcaption></figure>
     </div>
 
     <div class="feature">
@@ -430,7 +454,7 @@
           <li>Several colour themes, light or dark, and bigger text.</li>
         </ul>
       </div>
-      <figure class="shot win"><img src="images/laptop-hindi.jpg" width="1400" height="875" loading="lazy" alt="ShopBill with the menu and the bill page in Hindi"><figcaption>The same app in Hindi.</figcaption></figure>
+      <figure class="shot win"><picture><source srcset="images/laptop-hindi.webp" type="image/webp"><img src="images/laptop-hindi.jpg" width="1400" height="875" loading="lazy" alt="ShopBill with the menu and the bill page in Hindi" decoding="async"></picture><figcaption>The same app in Hindi.</figcaption></figure>
     </div>
 
     <h3 style="margin-top:72px;margin-bottom:18px">How the pieces work together</h3>
@@ -451,9 +475,9 @@
     <h2>Windows computers, Android phones and tablets</h2>
     <p class="lead">One app, with a layout that fits the screen. There is no iPhone, iPad or Mac version.</p>
     <div class="devshots">
-      <figure class="shot win"><img src="images/laptop-bill.jpg" width="1400" height="875" loading="lazy" alt="Computer layout of the billing page"><figcaption>Computer: menu on the left, total and payment on the right.</figcaption></figure>
-      <figure class="shot"><img src="images/tablet-bill.jpg" width="700" height="1120" loading="lazy" alt="Tablet layout of the billing page in two columns"><figcaption>Tablet size: two columns.</figcaption></figure>
-      <figure class="shot"><img src="images/shot-pay-phone.jpg" width="420" height="877" loading="lazy" alt="Phone payment page with cash, UPI, card, split and credit"><figcaption>Phone: payment.</figcaption></figure>
+      <figure class="shot win"><picture><source srcset="images/laptop-bill.webp" type="image/webp"><img src="images/laptop-bill.jpg" width="1400" height="875" loading="lazy" alt="Computer layout of the billing page" decoding="async"></picture><figcaption>Computer: menu on the left, total and payment on the right.</figcaption></figure>
+      <figure class="shot"><picture><source srcset="images/tablet-bill.webp" type="image/webp"><img src="images/tablet-bill.jpg" width="700" height="1120" loading="lazy" alt="Tablet layout of the billing page in two columns" decoding="async"></picture><figcaption>Tablet size: two columns.</figcaption></figure>
+      <figure class="shot"><picture><source srcset="images/shot-pay-phone.webp" type="image/webp"><img src="images/shot-pay-phone.jpg" width="420" height="877" loading="lazy" alt="Phone payment page with cash, UPI, card, split and credit" decoding="async"></picture><figcaption>Phone: payment.</figcaption></figure>
     </div>
     <div class="tablewrap">
       <table>
@@ -490,6 +514,7 @@
     <p class="lead" id="dl-lead">Latest version of ShopBill for Windows and Android.</p>
     <p class="notice"><b>Preview version.</b> Please keep a backup of your data.</p>
     <div class="dl" id="dl-apps"></div>
+    <noscript><p>Download the Windows installer or the Android file from the <a href="https://github.com/Abdul-Hamid-k/shopbill/releases/latest">latest release page</a>.</p></noscript>
     <div id="dl-fallback" hidden><p>The list of files could not be shown here. Open the <a href="https://github.com/Abdul-Hamid-k/shopbill/releases/latest">latest release page</a> to download.</p></div>
 
     <h3 style="margin-top:72px;margin-bottom:18px">How to install</h3>
@@ -633,6 +658,8 @@
   </div>
 </footer>
 
+<dialog id="lb" aria-label="Screenshot"><button type="button" aria-label="Close">×</button><img alt=""></dialog>
+
 <!--release-data--><script id="release-data" type="application/json">
 {
   "version": "0.5.15",
@@ -716,6 +743,43 @@
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
   nav.addEventListener('click', function (e) { if (e.target.tagName === 'A') { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
+
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && nav.classList.contains('open')) { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); btn.focus(); } });
+  document.addEventListener('click', function (e) { if (nav.classList.contains('open') && !nav.contains(e.target) && !btn.contains(e.target)) { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
+
+  // highlight the menu link of the section being read
+  if ('IntersectionObserver' in window) {
+    var links = {};
+    document.querySelectorAll('nav a[href^="#"]').forEach(function (a) { links[a.getAttribute('href').slice(1)] = a; });
+    var spy = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var a = links[e.target.id]; if (!a) return;
+        if (e.isIntersecting) { Object.keys(links).forEach(function (k) { links[k].removeAttribute('aria-current'); }); a.setAttribute('aria-current', 'true'); }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Object.keys(links).forEach(function (id) { var sec = document.getElementById(id); if (sec) spy.observe(sec); });
+  }
+
+  // click a screenshot to see it large
+  var lb = document.getElementById('lb');
+  if (lb && lb.showModal) {
+    var lbImg = lb.querySelector('img');
+    document.querySelectorAll('.shot img, .shotstack .laptop').forEach(function (im) {
+      im.tabIndex = 0; im.setAttribute('role', 'button'); im.setAttribute('aria-label', 'Enlarge: ' + im.alt);
+      var open = function () { lbImg.src = im.currentSrc || im.src; lbImg.alt = im.alt; lb.showModal(); };
+      im.addEventListener('click', open);
+      im.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+    lb.addEventListener('click', function () { lb.close(); });
+  }
+
+  // questions and answers for search engines, built from the visible FAQ
+  var qa = [];
+  document.querySelectorAll('#faq details').forEach(function (d) {
+    var q = d.querySelector('summary'), a = d.querySelector('p');
+    if (q && a) qa.push({ '@type': 'Question', name: q.textContent.trim(), acceptedAnswer: { '@type': 'Answer', text: a.textContent.trim() } });
+  });
+  if (qa.length) { var ld = document.createElement('script'); ld.type = 'application/ld+json'; ld.text = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: qa }); document.head.appendChild(ld); }
 
   function size(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.round(n / 1024) + ' KB'; }
   function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; }
