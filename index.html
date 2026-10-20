@@ -136,7 +136,6 @@
   .install { font-size:15px; color:var(--muted); margin:10px 0 0; }
   .res { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); margin-top:12px; }
   .res a { display:flex; justify-content:space-between; gap:10px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; text-decoration:none; font-weight:600; }
-  .res a span { color:var(--muted); font-weight:500; font-size:14px; white-space:nowrap; }
 
   /* pricing */
   .price { display:grid; gap:28px; grid-template-columns: repeat(auto-fit, minmax(270px,1fr)); align-items:stretch; }
@@ -191,7 +190,41 @@
   .cta h2 { color:#fff; }
   .cta p { max-width:560px; margin:0 auto 22px; opacity:.95; }
   .cta .btns { justify-content:center; }
-  </style>
+  
+  /* grids of three */
+  .flow, ol.steps, .three { display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; }
+  .flow { margin-top:20px; }
+  @media (max-width: 900px) { .flow, ol.steps, .three { grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width: 580px) { .flow, ol.steps, .three { grid-template-columns:1fr; gap:18px; } }
+  .flow .step { padding:28px; }
+  .flow .step b { margin-bottom:8px; font-size:18px; }
+  .flow .step span { line-height:1.7; }
+  /* downloads */
+  .dl .card { padding:32px; display:flex; flex-direction:column; }
+  .dl .card .tag { align-self:flex-start; margin:0 0 12px; white-space:nowrap; }
+  .dl h3 { display:block; margin:0; font-size:20px; line-height:1.35; }
+  .dl .meta { margin:12px 0 0; line-height:1.6; }
+  .dl .card .btn { margin-top:auto; align-self:flex-start; }
+  .dl .card .meta + .btn { margin-top:28px; }
+  .dl .card { min-height:230px; }
+  /* manuals and notes */
+  .docs-title { margin:80px 0 8px !important; }
+  .res { grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:20px; margin-top:24px; }
+  .res a { align-items:center; justify-content:flex-start; gap:18px; padding:20px 22px; border-radius:16px; color:var(--ink); font-weight:600; transition:transform .2s, box-shadow .2s, border-color .2s; }
+  .res a:hover { transform:translateY(-2px); box-shadow:var(--shadow); border-color:var(--brand); }
+  .res .ico { flex:none; width:48px; height:48px; border-radius:12px; background:var(--brand-soft); color:var(--brand-d); display:grid; place-items:center; font-size:13px; font-weight:800; letter-spacing:.03em; }
+  .res .tx { display:flex; flex-direction:column; gap:3px; min-width:0; flex:1; }
+  .res .tx b { font-size:16px; font-weight:700; color:var(--ink); line-height:1.35; }
+  .res .tx small { color:var(--muted); font-size:14px; font-weight:500; }
+  .res .go { flex:none; color:var(--brand); font-size:20px; font-weight:700; }
+  .res.more { margin-top:20px; }
+  /* contact buttons */
+  .contact .btns { margin-top:20px; flex-direction:column; align-items:stretch; }
+  .contact .btn { justify-content:center; }
+  .three { margin-top:48px; }
+  .three .card { padding:32px; }
+  .three .card h3 { margin-bottom:12px; }
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
@@ -403,6 +436,7 @@
       <li><h3>Set up your shop</h3><p>Add your shop name, item types (garments, dress, saree and so on), your employees and an owner PIN.</p></li>
       <li><h3>Bill</h3><p>Type the employee number, the item type number and the price. Choose how the customer pays and save.</p></li>
       <li><h3>Check and back up</h3><p>Look at Today and Reports, record expenses, and keep a backup copy away from the device.</p></li>
+      <li><h3>Keep going after the trial</h3><p>When the 15 days end, open Settings, then Licence, and pay by UPI inside the app.</p></li>
     </ol>
   </div>
 </section>
@@ -422,12 +456,12 @@
       <div class="card"><h3>Android</h3><p>Open the downloaded file on the phone and allow installs from this source when asked. Use the arm64 file on modern phones; use the larger one if that does not install.</p></div>
           </div>
 
-    <h3 style="margin-top:72px;margin-bottom:18px">User manual and release notes</h3>
+    <h3 class="docs-title">User manual and release notes</h3>
     <p class="meta">An illustrated step-by-step manual with real screenshots, for the computer and the phone.</p>
     <div class="res" id="dl-docs"></div>
-    <div class="res" style="margin-top:10px">
-      <a id="notes-link" href="https://github.com/Abdul-Hamid-k/shopbill/releases">Release notes and older versions <span>GitHub</span></a>
-      <a href="#faq">Frequently asked questions <span>on this page</span></a>
+    <div class="res more">
+      <a id="notes-link" href="https://github.com/Abdul-Hamid-k/shopbill/releases"><span class="ico">NEW</span><span class="tx"><b>Release notes</b><small>What changed, and older versions</small></span><span class="go">→</span></a>
+      <a href="#faq"><span class="ico">FAQ</span><span class="tx"><b>Frequently asked questions</b><small>Answers on this page</small></span><span class="go">↓</span></a>
     </div>
     
   </div>
@@ -480,7 +514,7 @@
     <h2>Frequently asked questions</h2>
     <details><summary>Does it need the internet?</summary><p>Only once, to register and start the free trial, and for the occasional licence check. Making bills never needs it.</p></details>
     <details><summary>How do I pay?</summary><p>Inside the app: Settings, then Licence. Choose a plan and pay by UPI. If anything is unclear, message us on WhatsApp.</p></details>
-    <details><summary>Can I get a refund?</summary><p>Ask us within 7 days of paying. Message us on WhatsApp at <a href="https://wa.me/917999863081">+91 79998 63081</a>.</p></details>
+    <details><summary>Can I get a refund?</summary><p>Ask us within 7 days of paying: <a href="https://wa.me/917999863081?text=Hello%2C%20I%20would%20like%20to%20ask%20about%20a%20refund.">message us on WhatsApp</a>.</p></details>
     <details><summary>How does the free trial work?</summary><p>Every new shop gets 15 days free. After that, a licence key keeps ShopBill running (see Pricing).</p></details>
     <details><summary>Where is my data kept?</summary><p>On your own computer or phone, in an encrypted database. Bills, customers and prices are never sent to us. Only the registration details, the licence check and, if you switch it on, crash reports leave the device.</p></details>
     <details><summary>What if my computer or phone is lost or breaks?</summary><p>Restore your latest backup on the new device with its file and password. That is why ShopBill reminds you to keep one backup copy away from the device. A forgotten backup password cannot be recovered.</p></details>
@@ -490,7 +524,7 @@
     <details><summary>Is there stock and inventory?</summary><p>Yes, as a count per item type that goes down when you sell and goes up when you press Add to stock on a purchase order. There is no barcode or per-product catalogue.</p></details>
     <details><summary>What happens when my subscription ends?</summary><p>ShopBill keeps working for 7 days with a warning. Then billing stops, but the licence, payment, backup and support screens stay open so you can renew and take your data out.</p></details>
     <details><summary>Can I get a demo?</summary><p>The 15-day free trial is the demo: install it and try it with your own items. If you would like help getting started, message us on WhatsApp.</p></details>
-    <details><summary>How do I get help?</summary><p>Message us on WhatsApp: <a href="https://wa.me/917999863081">+91 79998 63081</a>, or write to <a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a>.</p></details>
+    <details><summary>How do I get help?</summary><p><a href="https://wa.me/917999863081?text=Hello%2C%20I%20need%20help%20with%20ShopBill.">Message us on WhatsApp</a> or <a href="mailto:Abdulhamidk0172@gmail.com">send us an email</a>.</p></details>
   </div>
 </section>
 
@@ -498,11 +532,11 @@
   <div class="wrap">
     <p class="eyebrow">Trust and support</p>
     <h2>What you can count on, and where to reach us</h2>
-    <div class="cards">
+    <div class="three">
       <div class="card"><h3>Your data stays with you</h3><p>The database on your device is encrypted. Backups are locked with your own password. The owner's pages are behind a PIN.</p></div>
       <div class="card" id="privacy"><h3>Your privacy</h3><p>When you register, your name, shop name and mobile number (and your email and town, if you add them) are sent to the ShopBill licence server to start your trial and check your licence. You agree to this in the app when you register. Your bills, customers, prices and staff never leave your device. Crash reports are off unless you switch them on.</p></div>
-      <div class="card"><h3>WhatsApp</h3><p><a href="https://wa.me/917999863081">+91 79998 63081</a><br>Message us to start, to buy or to ask for help.</p></div>
-      <div class="card"><h3>Email</h3><p><a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a><br>Write to us any time.</p></div>
+      <div class="card contact"><h3>Talk to us</h3><p>Questions, help getting started, or a refund request: we reply on WhatsApp and by email.</p>
+        <div class="btns"><a class="btn" href="https://wa.me/917999863081?text=Hello%2C%20I%20need%20help%20with%20ShopBill.">Message us on WhatsApp</a><a class="btn ghost" href="mailto:Abdulhamidk0172@gmail.com">Send us an email</a></div></div>
     </div>
   </div>
 </section>
@@ -517,7 +551,7 @@
   <div class="wrap cols">
     <div><h3>ShopBill</h3><p>Billing for textile and garment shops. Windows and Android.</p></div>
     <div><h3>Get it</h3><ul><li><a href="#downloads">Downloads and manual</a></li><li><a href="#pricing">Pricing</a></li><li><a href="https://github.com/Abdul-Hamid-k/shopbill/releases">All releases</a></li></ul></div>
-    <div><h3>Contact</h3><ul><li><a href="https://wa.me/917999863081">WhatsApp +91 79998 63081</a></li><li><a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a></li></ul></div>
+    <div><h3>Contact</h3><ul><li><a href="https://wa.me/917999863081">Message us on WhatsApp</a></li><li><a href="mailto:Abdulhamidk0172@gmail.com">Send us an email</a></li></ul></div>
     <div><h3>Privacy</h3><p><a href="#privacy">How your data is handled</a></p></div>
   </div>
 </footer>
@@ -627,7 +661,8 @@
   any.forEach(function (f) {
     var rec = (f.group === 'android') === android && (f.group === 'windows' || /arm64/.test(f.name));
     var c = el('div', 'card' + (rec ? ' rec' : ''));
-    c.appendChild(el('h3', '', '<span>' + esc(f.title) + '</span>' + (rec ? '<span class="tag">For your device</span>' : '')));
+    if (rec) c.appendChild(el('span', 'tag', 'For your device'));
+    c.appendChild(el('h3', '', esc(f.title)));
     c.appendChild(el('p', 'meta', esc(f.type) + ' file, ' + size(f.size) + '. Version ' + esc(data.version) + ', ' + when(data.date) + '.'));
     var a = el('a', 'btn' + (rec ? '' : ' ghost'), 'Download ' + esc(f.type));
     a.href = f.url; a.setAttribute('download', '');
@@ -636,7 +671,7 @@
   });
   var docs = document.getElementById('dl-docs');
   data.files.filter(function (f) { return f.group === 'manual'; }).sort(function (a, b) { return a.title.length - b.title.length; }).forEach(function (f) {
-    var a = el('a', '', '<b>' + esc(f.title) + '</b><span>' + esc(f.type) + ', ' + size(f.size) + '</span>');
+    var a = el('a', '', '<span class="ico">' + esc(f.type) + '</span><span class="tx"><b>' + esc(f.title.replace('User manual, ', 'Manual: ')) + '</b><small>' + esc(f.type) + ' file, ' + size(f.size) + '</small></span><span class="go">↓</span>');
     a.href = f.url; docs.appendChild(a);
   });
   var hd = document.getElementById('hero-download');
