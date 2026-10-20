@@ -31,6 +31,14 @@
   code.k { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:2px 8px; }
   footer { color:var(--muted); font-size:14px; padding: 8px 0 40px; }
   a { color: var(--brand); }
+  .shots { display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin: 12px 0 8px; }
+  .shots.phones { grid-template-columns: repeat(auto-fit, minmax(180px, 220px)); justify-content: start; }
+  .shots figure { margin:0; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:8px; }
+  .shots img { width:100%; height:auto; display:block; border-radius:8px; }
+  .shots figcaption { color:var(--muted); font-size:14px; padding: 8px 4px 2px; }
+  details { background:var(--card); border:1px solid var(--line); border-radius:12px; padding: 10px 14px; margin: 0 0 10px; }
+  details summary { cursor:pointer; font-weight:700; }
+  details p { margin: 8px 0 2px; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -52,6 +60,18 @@
     <div class="card"><h3>Works offline, stays private</h3><p>No internet needed. Your data is encrypted on the device, with password-protected backups.</p></div>
     <div class="card"><h3>Six languages</h3><p>English, Hindi, Marathi, Gujarati, Tamil and Telugu, in the app and on the printed bill.</p></div>
   </div>
+  <h2>See it working</h2>
+  <p>Real screens of the app with made-up sample data.</p>
+  <div class="shots">
+    <figure><img src="images/shot-bill-desktop.jpg" alt="Making a bill on a computer: four boxes for the employee, the item, how many and the price" loading="lazy"><figcaption>A bill on a computer: four boxes, all numbers.</figcaption></figure>
+    <figure><img src="images/shot-today-desktop.jpg" alt="The Today page with sales, how people paid and the latest bills" loading="lazy"><figcaption>Today: sales, how people paid, cash after expenses.</figcaption></figure>
+    <figure><img src="images/shot-staff-desktop.jpg" alt="An employee's page with commission worked out from the bills" loading="lazy"><figcaption>Commission worked out from the bills.</figcaption></figure>
+    <figure><img src="images/shot-reports-desktop.jpg" alt="Reports with net sales, expenses and money kept" loading="lazy"><figcaption>Reports for the owner.</figcaption></figure>
+  </div>
+  <div class="shots phones">
+    <figure><img src="images/shot-bill-phone.jpg" alt="Making a bill on a phone with the big number pad" loading="lazy"><figcaption>On a phone: a big number pad under your thumb.</figcaption></figure>
+    <figure><img src="images/shot-pay-phone.jpg" alt="The payment page on a phone with cash, UPI, card, split and credit" loading="lazy"><figcaption>Payment: cash, UPI, card, split or credit.</figcaption></figure>
+  </div>
   <h2>User manual</h2>
   <p>An illustrated step-by-step manual with real screenshots, for the computer and the phone (version 0.5.15):</p>
   <p><a class="btn alt" style="color:#0f766e;border-color:#0f766e" href="https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.15/ShopBill-Manual-0.5.15-English.pdf">English (PDF)</a>
@@ -60,6 +80,14 @@
   <h2>Windows and Android</h2>
   <p>Download the installer or the APK from the <a href="https://github.com/Abdul-Hamid-k/shopbill/releases/latest">latest release</a>. Every new shop gets a 15-day free trial.</p>
   <p><strong>Preview:</strong> current builds are for testers. Please do not rely on them for real business records yet.</p>
+  <h2>Questions</h2>
+  <details><summary>Does it need the internet?</summary><p>Only once, to register and start the free trial, and for the occasional licence check. Making bills never needs it.</p></details>
+  <details><summary>Where is my data kept?</summary><p>On your own computer or phone, in an encrypted database. Bills, customers and prices are never sent to anyone. Backups are locked with a password you choose; a forgotten backup password cannot be recovered, so write it down.</p></details>
+  <details><summary>Does it file my GST or income tax?</summary><p>No. It keeps the records and prepares the tables and files your accountant asks for. The accountant files the return.</p></details>
+  <details><summary>Which devices does it run on?</summary><p>Windows computers and Android phones and tablets.</p></details>
+  <details><summary>Which printers?</summary><p>Bills are laid out for 58 mm and 80 mm rolls and for A4, and are printed through the printer you choose. We are testing on real printers: please tell us how it prints on yours.</p></details>
+  <details><summary>Which languages?</summary><p>English, Hindi, Marathi, Gujarati, Tamil and Telugu, in the app and on the printed bill.</p></details>
+  <details><summary>How do I get help?</summary><p>Message us on WhatsApp: <a href="https://wa.me/917999863081">+91 79998 63081</a>, or write to <a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a>.</p></details>
 </main>
 <footer class="wrap">ShopBill &middot; <a href="https://github.com/Abdul-Hamid-k/shopbill/releases">Releases</a></footer>
 </body>
