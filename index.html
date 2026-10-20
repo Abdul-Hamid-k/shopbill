@@ -3,92 +3,609 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ShopBill - fast billing for small shops</title>
+<title>ShopBill: fast billing for textile and garment shops</title>
+<meta name="description" content="ShopBill is a billing app for textile and garment shops on Windows and Android. Make a bill in seconds, track customer credit, work out staff commission, record purchases and keep reports. Works offline. 15-day free trial.">
+<meta name="theme-color" content="#4f46e5">
 <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
 <link rel="apple-touch-icon" href="logo-192.png">
-<meta property="og:title" content="ShopBill - fast billing for small shops">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ShopBill">
+<meta property="og:title" content="ShopBill: fast billing for textile and garment shops">
+<meta property="og:description" content="Make a bill in seconds. Credit, staff commission, purchases and reports. Offline, for Windows and Android. 15-day free trial.">
 <meta property="og:image" content="logo-192.png">
-<meta name="description" content="ShopBill: type a few numbers to make a bill. Commission for every employee, customer credit, expenses, reports and printing. Offline, for Windows and Android.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ShopBill",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Windows, Android",
+  "description": "Billing app for textile and garment shops: fast bills, customer credit, staff commission, purchases, expenses and reports. Works offline.",
+  "inLanguage": ["en", "hi", "mr", "gu", "ta", "te"],
+  "offers": { "@type": "Offer", "price": "6000", "priceCurrency": "INR", "description": "One-time fee for a new shop, includes the first 12 months" }
+}
+</script>
 <style>
-  :root { --bg:#f4f6fb; --card:#ffffff; --ink:#0f1a2b; --muted:#5a6578; --brand:#0f766e; --brand2:#14b8a6; --line:#e3e8f0; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#0a0d14; --card:#121722; --ink:#eef2f8; --muted:#9aa6b8; --brand:#2dd4bf; --brand2:#14b8a6; --line:#222b3a; } }
+  :root {
+    --bg:#f6f5fc; --card:#ffffff; --ink:#14122b; --muted:#555a70; --line:#e3e1f0;
+    --brand:#4f46e5; --brand-d:#3730a3; --brand-soft:#ede9fe; --accent:#e8523f; --ok:#0f766e;
+    --hero1:#2b2579; --hero2:#4f46e5; --shadow:0 10px 30px rgba(49,46,129,.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0e0d1c; --card:#17152b; --ink:#f1f0fb; --muted:#aaa8c4; --line:#2a2848; --brand:#a5a0ff; --brand-d:#c7c3ff; --brand-soft:#25225a; --accent:#ff8a78; --ok:#5eead4; --hero1:#1a1650; --hero2:#3b34b8; --shadow:0 10px 30px rgba(0,0,0,.4); }
+  }
   * { box-sizing: border-box; }
-  body { margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background:var(--bg); color:var(--ink); line-height:1.55; }
-  .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
-  header.hero { background: linear-gradient(135deg, #0f766e, #0ea5e9); color:#fff; padding: 56px 0 64px; }
-  header.hero .brand { display:flex; align-items:center; gap:16px; margin:0 0 8px; }
-  header.hero .brand img { width:56px; height:56px; border-radius:14px; flex:none; }
-  header.hero h1 { margin:0; font-size: clamp(32px, 6vw, 48px); letter-spacing:-0.02em; }
-  header.hero p { margin:0 0 24px; font-size: clamp(16px, 2.6vw, 20px); max-width: 640px; opacity:.95; }
-  .btn { display:inline-block; background:#fff; color:#0f766e; font-weight:700; text-decoration:none; padding: 12px 22px; border-radius: 12px; margin: 0 10px 10px 0; }
-  .btn.alt { background: rgba(255,255,255,.16); color:#fff; border:1px solid rgba(255,255,255,.5); }
-  main { padding: 36px 0 48px; }
-  .grid { display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px; }
-  .card h3 { margin:0 0 6px; font-size:17px; }
-  .card p { margin:0; color:var(--muted); font-size:15px; }
-  h2 { margin: 36px 0 14px; font-size: 24px; }
-  code.k { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:2px 8px; }
-  footer { color:var(--muted); font-size:14px; padding: 8px 0 40px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+  body { margin:0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Noto Sans Devanagari", sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; font-size:17px; }
+  img { max-width:100%; height:auto; display:block; }
   a { color: var(--brand); }
-  .shots { display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin: 12px 0 8px; }
-  .shots.phones { grid-template-columns: repeat(auto-fit, minmax(180px, 220px)); justify-content: start; }
-  .shots figure { margin:0; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:8px; }
-  .shots img { width:100%; height:auto; display:block; border-radius:8px; }
-  .shots figcaption { color:var(--muted); font-size:14px; padding: 8px 4px 2px; }
-  details { background:var(--card); border:1px solid var(--line); border-radius:12px; padding: 10px 14px; margin: 0 0 10px; }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline:3px solid var(--accent); outline-offset:3px; border-radius:6px; }
+  .skip { position:absolute; left:-999px; top:8px; background:#fff; color:#000; padding:8px 14px; border-radius:8px; z-index:100; }
+  .skip:focus { left:8px; }
+  .wrap { max-width:1120px; margin:0 auto; padding:0 20px; }
+  section { padding: 64px 0; }
+  h2 { font-size: clamp(26px, 4vw, 36px); line-height:1.2; letter-spacing:-.02em; margin:0 0 10px; }
+  h3 { font-size:19px; margin:0 0 6px; }
+  .lead { color:var(--muted); font-size:19px; max-width:720px; margin:0 0 30px; }
+  .eyebrow { color:var(--accent); font-weight:800; text-transform:uppercase; letter-spacing:.08em; font-size:13px; margin:0 0 8px; }
+
+  /* header */
+  header.top { position:sticky; top:0; z-index:50; background:color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px); border-bottom:1px solid var(--line); }
+  .bar { display:flex; align-items:center; gap:18px; min-height:64px; }
+  .logo { display:flex; align-items:center; gap:10px; font-weight:800; font-size:20px; color:var(--ink); text-decoration:none; margin-right:auto; }
+  .logo img { width:36px; height:36px; border-radius:9px; }
+  nav ul { display:flex; gap:4px; list-style:none; margin:0; padding:0; }
+  nav a { display:block; padding:8px 12px; border-radius:10px; color:var(--ink); text-decoration:none; font-weight:600; font-size:15px; }
+  nav a:hover { background:var(--brand-soft); }
+  .menu-btn { display:none; background:none; border:1px solid var(--line); color:var(--ink); border-radius:10px; padding:8px 12px; font:inherit; font-weight:700; cursor:pointer; }
+  @media (max-width: 860px) {
+    .menu-btn { display:block; }
+    nav { position:absolute; left:0; right:0; top:64px; background:var(--bg); border-bottom:1px solid var(--line); display:none; padding:8px 20px 14px; }
+    nav.open { display:block; }
+    nav ul { flex-direction:column; }
+  }
+
+  /* buttons */
+  .btn { display:inline-flex; align-items:center; gap:8px; background:var(--brand); color:#fff; font-weight:700; text-decoration:none; padding:13px 22px; border-radius:12px; border:2px solid var(--brand); font-size:17px; transition: transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+  .btn.ghost { background:transparent; color:var(--brand); }
+  .btn.light { background:#fff; color:#2b2579; border-color:#fff; }
+  .btn.light.ghost { background:rgba(255,255,255,.12); color:#fff; border-color:rgba(255,255,255,.6); }
+  @media (prefers-color-scheme: dark) { .btn { color:#0e0d1c; } .btn.ghost { color:var(--brand); } }
+  .btns { display:flex; flex-wrap:wrap; gap:12px; }
+
+  /* hero */
+  .hero { background: linear-gradient(135deg, var(--hero1), var(--hero2)); color:#fff; padding: 56px 0 72px; overflow:hidden; }
+  .hero .grid { display:grid; grid-template-columns: 1.05fr 1fr; gap:40px; align-items:center; }
+  .hero h1 { font-size: clamp(34px, 5.4vw, 56px); line-height:1.08; letter-spacing:-.03em; margin:0 0 16px; }
+  .hero p { font-size: clamp(17px, 2.2vw, 20px); opacity:.95; margin:0 0 26px; max-width:560px; }
+  .hero .small { font-size:15px; opacity:.85; margin:16px 0 0; }
+  .shotstack { position:relative; padding-bottom:6%; }
+  .shotstack .laptop { border-radius:14px; box-shadow:0 24px 60px rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.25); }
+  .shotstack .phone { position:absolute; right:-2%; bottom:-6%; width:23%; border-radius:18px; box-shadow:0 18px 40px rgba(0,0,0,.45); border:3px solid #fff; }
+  @media (max-width: 900px) { .hero .grid { grid-template-columns:1fr; } .shotstack { max-width:640px; } }
+
+  .notice { background:var(--brand-soft); border:1px solid var(--line); border-radius:12px; padding:12px 16px; font-size:15px; margin:0 0 24px; }
+
+  /* cards */
+  .cards { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px; }
+  .card p { margin:0; color:var(--muted); font-size:16px; }
+  .icon { width:44px; height:44px; border-radius:12px; background:var(--brand-soft); display:grid; place-items:center; font-size:22px; margin-bottom:12px; }
+
+  /* features */
+  .feature { display:grid; grid-template-columns: 1fr 1.2fr; gap:36px; align-items:center; padding:34px 0; border-top:1px solid var(--line); }
+  .feature:first-of-type { border-top:0; }
+  .feature.flip .text { order:2; }
+  .feature ul { padding-left:20px; margin:12px 0 0; color:var(--muted); }
+  .feature li { margin:5px 0; }
+  .shot { margin:0; background:var(--card); border:1px solid var(--line); border-radius:14px; padding:8px; box-shadow:var(--shadow); }
+  .shot img { border-radius:8px; width:100%; }
+  .shot figcaption { color:var(--muted); font-size:14px; padding:8px 6px 2px; }
+  @media (max-width: 860px) { .feature { grid-template-columns:1fr; gap:18px; } .feature.flip .text { order:0; } }
+  .tag { display:inline-block; font-size:12px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:3px 9px; border-radius:99px; background:var(--brand-soft); color:var(--brand-d); margin:0 6px 6px 0; }
+  .tag.soon { background:#fff3cd; color:#7a5800; }
+
+  /* flow */
+  .flow { display:grid; gap:12px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin-top:10px; }
+  .flow .step { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; position:relative; }
+  .flow .step b { display:block; margin-bottom:4px; }
+  .flow .step span { color:var(--muted); font-size:15px; }
+
+  /* devices */
+  table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; font-size:16px; }
+  th, td { text-align:left; padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { background:var(--brand-soft); font-size:14px; }
+  tr:last-child td { border-bottom:0; }
+  .tablewrap { overflow-x:auto; }
+  .devshots { display:grid; grid-template-columns: 1.6fr 1fr .6fr; gap:16px; align-items:end; margin-bottom:26px; }
+  @media (max-width: 700px) { .devshots { grid-template-columns: 1fr 1fr; } .devshots .shot:first-child { grid-column: 1 / -1; } }
+
+  /* how */
+  ol.steps { list-style:none; counter-reset: s; padding:0; margin:0; display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); }
+  ol.steps li { counter-increment: s; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px 20px 20px; }
+  ol.steps li::before { content: counter(s); display:grid; place-items:center; width:34px; height:34px; border-radius:50%; background:var(--brand); color:#fff; font-weight:800; margin-bottom:10px; }
+  @media (prefers-color-scheme: dark) { ol.steps li::before { color:#0e0d1c; } }
+  kbd { background:var(--brand-soft); border:1px solid var(--line); border-radius:6px; padding:1px 7px; font-family:inherit; font-weight:700; font-size:.92em; }
+
+  /* downloads */
+  .dl { display:grid; gap:14px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+  .dl .card.rec { border:2px solid var(--brand); }
+  .dl h3 { display:flex; justify-content:space-between; gap:8px; align-items:center; }
+  .meta { color:var(--muted); font-size:14px; margin:6px 0 12px; }
+  .sha { font-family: ui-monospace, Consolas, monospace; font-size:12px; word-break:break-all; color:var(--muted); margin-top:10px; }
+  .install { font-size:15px; color:var(--muted); margin:10px 0 0; }
+  .res { display:grid; gap:10px; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); margin-top:12px; }
+  .res a { display:flex; justify-content:space-between; gap:10px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; text-decoration:none; font-weight:600; }
+  .res a span { color:var(--muted); font-weight:500; font-size:14px; white-space:nowrap; }
+
+  /* pricing */
+  .price { display:grid; gap:16px; grid-template-columns: repeat(auto-fit, minmax(270px,1fr)); align-items:stretch; }
+  .price .card { display:flex; flex-direction:column; }
+  .price .card.main { border:2px solid var(--brand); box-shadow:var(--shadow); }
+  .card .amount { color:var(--ink); font-size:40px; font-weight:800; letter-spacing:-.02em; line-height:1.1; margin:8px 0 2px; }
+  .card .amount small { font-size:16px; font-weight:600; color:var(--muted); }
+  .price ul { padding-left:20px; margin:12px 0 18px; color:var(--muted); font-size:16px; }
+  .price .btn { margin-top:auto; justify-content:center; }
+  .confirm { background:var(--card); border:1px dashed var(--accent); border-radius:14px; padding:16px 20px; margin-top:22px; font-size:16px; }
+  .confirm ul { margin:8px 0 0; padding-left:20px; color:var(--muted); }
+
+  /* faq */
+  details { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin:0 0 10px; }
   details summary { cursor:pointer; font-weight:700; }
-  details p { margin: 8px 0 2px; color:var(--muted); }
+  details p { margin:10px 0 2px; color:var(--muted); }
+
+  footer { background:var(--card); border-top:1px solid var(--line); padding:36px 0 44px; font-size:15px; color:var(--muted); }
+  footer .cols { display:grid; gap:24px; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); }
+  footer h3 { font-size:15px; color:var(--ink); }
+  footer ul { list-style:none; padding:0; margin:0; }
+  footer li { margin:5px 0; }
+  .alt { background:color-mix(in srgb, var(--brand-soft) 45%, var(--bg)); }
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="wrap">
-    <div class="brand"><img src="logo-128.png" width="56" height="56" alt="ShopBill logo"><h1>ShopBill</h1></div>
-    <p>Type a few numbers to make a bill. Commission for every employee, customer credit, expenses, reports and printing, fully offline.</p>
-    <a class="btn" href="https://github.com/Abdul-Hamid-k/shopbill/releases/latest">Download</a>
-    <a class="btn alt" href="https://github.com/Abdul-Hamid-k/shopbill#install">How to install</a>
+<a class="skip" href="#main">Skip to the content</a>
+<header class="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top"><img src="logo-128.png" width="36" height="36" alt="">ShopBill</a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#devices">Devices</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#support">Support</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
-<main class="wrap">
-  <h2>Made for the counter</h2>
-  <div class="grid">
-    <div class="card"><h3>Bill in seconds</h3><p>Who sold it, what it was, how much: <code class="k">1 Enter 2 Enter 1450 Enter</code>. A big number pad on phones.</p></div>
-    <div class="card"><h3>Employee commission</h3><p>Rates, targets and bonus; worked out from the bills and paid with a slip. Returns reduce it fairly.</p></div>
-    <div class="card"><h3>Credit (udhaar)</h3><p>Know who owes what and since when. Take old dues while billing, send reminders on WhatsApp.</p></div>
-    <div class="card"><h3>Expenses and reports</h3><p>Daily cash after expenses, sales by employee and item type, GST, downloads in Excel, PDF and CSV.</p></div>
-    <div class="card"><h3>Works offline, stays private</h3><p>No internet needed. Your data is encrypted on the device, with password-protected backups.</p></div>
-    <div class="card"><h3>Six languages</h3><p>English, Hindi, Marathi, Gujarati, Tamil and Telugu, in the app and on the printed bill.</p></div>
+
+<main id="main">
+<div id="top" class="hero">
+  <div class="wrap grid">
+    <div>
+      <p class="eyebrow" style="color:#ffb3a8">For textile and garment shops</p>
+      <h1>Make a bill in seconds. Know your day by evening.</h1>
+      <p>ShopBill is a billing app for the counter. Type who sold it, what it was and the price. It works out each employee's commission, remembers who owes you, and keeps your expenses and reports, even without internet.</p>
+      <div class="btns">
+        <a class="btn light" href="#downloads" id="hero-download">Download free for 15 days</a>
+        <a class="btn light ghost" href="#features">Explore features</a>
+      </div>
+      <p class="small" id="hero-version">Windows and Android. Six languages.</p>
+    </div>
+    <div class="shotstack">
+      <img class="laptop" src="images/laptop-bill.jpg" width="1400" height="875" alt="ShopBill on a computer: a bill with two items and the total on the right, with cash, UPI, card, split and credit buttons">
+      <img class="phone" src="images/phone-bill.jpg" width="500" height="1044" alt="ShopBill on a phone with the big number pad" loading="eager">
+    </div>
   </div>
-  <h2>See it working</h2>
-  <p>Real screens of the app with made-up sample data.</p>
-  <div class="shots">
-    <figure><img src="images/shot-bill-desktop.jpg" alt="Making a bill on a computer: four boxes for the employee, the item, how many and the price" loading="lazy"><figcaption>A bill on a computer: four boxes, all numbers.</figcaption></figure>
-    <figure><img src="images/shot-today-desktop.jpg" alt="The Today page with sales, how people paid and the latest bills" loading="lazy"><figcaption>Today: sales, how people paid, cash after expenses.</figcaption></figure>
-    <figure><img src="images/shot-staff-desktop.jpg" alt="An employee's page with commission worked out from the bills" loading="lazy"><figcaption>Commission worked out from the bills.</figcaption></figure>
-    <figure><img src="images/shot-reports-desktop.jpg" alt="Reports with net sales, expenses and money kept" loading="lazy"><figcaption>Reports for the owner.</figcaption></figure>
+</div>
+
+<section id="overview">
+  <div class="wrap">
+    <p class="eyebrow">What it does for you</p>
+    <h2>Built around how a counter really works</h2>
+    <p class="lead">Fewer clicks while the customer waits, and clear answers at closing time.</p>
+    <div class="cards">
+      <div class="card"><div class="icon" aria-hidden="true">⚡</div><h3>Quick bills</h3><p>Four boxes, all numbers: employee, item type, quantity, price. A bill takes a few key presses, and a big number pad appears on phones.</p></div>
+      <div class="card"><div class="icon" aria-hidden="true">👥</div><h3>Fair staff commission</h3><p>Each employee's commission comes from the bills, using the rates you set. Returns reduce it, and you can print a payment slip.</p></div>
+      <div class="card"><div class="icon" aria-hidden="true">📒</div><h3>Credit (udhaar) remembered</h3><p>See who owes what and since when. Take old dues while billing.</p></div>
+      <div class="card"><div class="icon" aria-hidden="true">📊</div><h3>Today at a glance</h3><p>Sales, how people paid, cash after expenses and your latest bills on one page.</p></div>
+      <div class="card"><div class="icon" aria-hidden="true">🔒</div><h3>Yours alone, even offline</h3><p>No internet needed to bill. The data stays on your device in an encrypted database, with password-protected backups.</p></div>
+      <div class="card"><div class="icon" aria-hidden="true">🗣️</div><h3>In your language</h3><p>English, Hindi, Marathi, Gujarati, Tamil and Telugu, in the app and on the printed bill.</p></div>
+    </div>
   </div>
-  <div class="shots phones">
-    <figure><img src="images/shot-bill-phone.jpg" alt="Making a bill on a phone with the big number pad" loading="lazy"><figcaption>On a phone: a big number pad under your thumb.</figcaption></figure>
-    <figure><img src="images/shot-pay-phone.jpg" alt="The payment page on a phone with cash, UPI, card, split and credit" loading="lazy"><figcaption>Payment: cash, UPI, card, split or credit.</figcaption></figure>
+</section>
+
+<section id="features" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">Features</p>
+    <h2>Everything here is in the app today</h2>
+    <p class="lead">Real screens with made-up shop data (Lakshmi Textiles). Nothing on this page is a mock-up or a planned feature, except where marked <span class="tag soon">Coming soon</span>.</p>
+
+    <div class="feature">
+      <div class="text">
+        <h3>Billing</h3>
+        <p>Type <kbd>1</kbd> <kbd>Enter</kbd> <kbd>2</kbd> <kbd>Enter</kbd> <kbd>1450</kbd> <kbd>Enter</kbd>: seller, item type, price. Add more items the same way.</p>
+        <ul>
+          <li>Up to six bills open at once, and a bill can be put on hold.</li>
+          <li>Pay by cash, UPI, card, split between methods, or on credit.</li>
+          <li>Discount, customer name and phone, and the change to give back.</li>
+          <li>Save and print, or save only. Bills are laid out for 58 mm and 80 mm rolls and for A4.</li>
+          <li>Send a bill on WhatsApp from the device.</li>
+        </ul>
+      </div>
+      <figure class="shot"><img src="images/laptop-bill.jpg" width="1400" height="875" loading="lazy" alt="Billing page with a bill of two dress items and total of 2,900 rupees"><figcaption>Billing on a computer.</figcaption></figure>
+    </div>
+
+    <div class="feature flip">
+      <div class="text">
+        <h3>Today, bills and reports</h3>
+        <ul>
+          <li><b>Today:</b> sales so far, cash, UPI, card and credit, top seller, commission, money spent and cash after expenses.</li>
+          <li><b>Bills:</b> find any bill, open it, print it again, take a return.</li>
+          <li><b>Reports:</b> net sales, expenses and money kept; sales by employee and by item type; GST tables for your accountant.</li>
+          <li>Download reports as Excel, PDF or CSV.</li>
+        </ul>
+        <p class="meta">ShopBill keeps the records and prepares the tables. It does not file GST or income tax: your accountant does that.</p>
+      </div>
+      <figure class="shot"><img src="images/laptop-today.jpg" width="1400" height="875" loading="lazy" alt="Today page with sales so far, cash, UPI, card and credit totals and the latest bills"><figcaption>Today: sales, how people paid, cash after expenses.</figcaption></figure>
+    </div>
+
+    <div class="feature">
+      <div class="text">
+        <h3>Customers and credit</h3>
+        <ul>
+          <li>A list of customers with what each owes and the date of the last bill.</li>
+          <li>Filter to the ones who owe money, or the late ones.</li>
+          <li>Record a payment against old dues, and take dues while billing.</li>
+        </ul>
+      </div>
+      <figure class="shot"><img src="images/laptop-customers.jpg" width="1400" height="875" loading="lazy" alt="Customers page showing 21,972 rupees owed by 11 customers"><figcaption>Who owes you, and since when.</figcaption></figure>
+    </div>
+
+    <div class="feature flip">
+      <div class="text">
+        <h3>Staff, commission and attendance</h3>
+        <ul>
+          <li>Commission worked out from the bills, per employee, with rates, targets and bonus.</li>
+          <li>A category can have its own rule (for example sarees).</li>
+          <li>Returns reduce commission; a payment slip can be printed.</li>
+          <li>Mark attendance on its own page.</li>
+        </ul>
+      </div>
+      <figure class="shot"><img src="images/laptop-staff.jpg" width="1400" height="875" loading="lazy" alt="Staff page with each employee's sales, share of sales and commission"><figcaption>Commission worked out from the bills.</figcaption></figure>
+    </div>
+
+    <div class="feature">
+      <div class="text">
+        <h3>Purchases and stock</h3>
+        <ul>
+          <li>Order from a supplier with quantities, prices, tax and expected delivery.</li>
+          <li>Record each delivery, including damaged or missing goods.</li>
+          <li>Stock changes only when you press <b>Add to stock</b>, so a delivery you have not checked never changes your count.</li>
+          <li>A payment to the supplier is added to Expenses automatically.</li>
+          <li>Print or export an order as PDF or Excel.</li>
+        </ul>
+        <p class="meta">Stock is a count per item type, and you choose which types to track. It is not a barcode or per-product inventory system.</p>
+      </div>
+      <figure class="shot"><img src="images/laptop-purchases.jpg" width="1400" height="875" loading="lazy" alt="A purchase order from a supplier with stages Order Placed, Received and Stock Added"><figcaption>A purchase order, from order to stock.</figcaption></figure>
+    </div>
+
+    <div class="feature flip">
+      <div class="text">
+        <h3>Backups and safety</h3>
+        <ul>
+          <li>Backups locked with a password you choose, made every day, week or month.</li>
+          <li>Share a backup to WhatsApp to keep a copy away from the device, and get a reminder if you have not.</li>
+          <li>Restore on a new computer or phone with the backup file and its password.</li>
+          <li>An owner PIN protects the owner's pages.</li>
+          <li><span class="tag soon">Coming soon</span> Upload straight to Google Drive.</li>
+        </ul>
+        <p class="meta">A forgotten backup password cannot be recovered, so write it down.</p>
+      </div>
+      <figure class="shot"><img src="images/laptop-backup.jpg" width="1400" height="875" loading="lazy" alt="Backup and restore settings with automatic backup options and a share button"><figcaption>Backup and restore.</figcaption></figure>
+    </div>
+
+    <div class="feature">
+      <div class="text">
+        <h3>Six languages, your colours</h3>
+        <ul>
+          <li>English, Hindi, Marathi, Gujarati, Tamil and Telugu, in the app and on the printed bill.</li>
+          <li>Several colour themes, light or dark, and bigger text.</li>
+        </ul>
+      </div>
+      <figure class="shot"><img src="images/laptop-hindi.jpg" width="1400" height="875" loading="lazy" alt="ShopBill with the menu and the bill page in Hindi"><figcaption>The same app in Hindi.</figcaption></figure>
+    </div>
+
+    <h3 style="margin-top:34px">How the pieces work together</h3>
+    <div class="flow" role="list">
+      <div class="step" role="listitem"><b>1. Bill</b><span>One bill records the sale, who sold it and how it was paid.</span></div>
+      <div class="step" role="listitem"><b>2. Commission</b><span>The same bill updates the seller's commission.</span></div>
+      <div class="step" role="listitem"><b>3. Credit</b><span>If it was on credit, the customer's dues go up.</span></div>
+      <div class="step" role="listitem"><b>4. Today and Reports</b><span>Sales, payments and expenses add up to cash after expenses.</span></div>
+      <div class="step" role="listitem"><b>5. Purchases</b><span>Supplier payments become expenses; delivered goods go to stock when you say so.</span></div>
+      <div class="step" role="listitem"><b>6. Backup</b><span>A password-protected copy keeps it all safe.</span></div>
+    </div>
   </div>
-  <h2>User manual</h2>
-  <p>An illustrated step-by-step manual with real screenshots, for the computer and the phone (version 0.5.15):</p>
-  <p><a class="btn alt" style="color:#0f766e;border-color:#0f766e" href="https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.15/ShopBill-Manual-0.5.15-English.pdf">English (PDF)</a>
-  <a class="btn alt" style="color:#0f766e;border-color:#0f766e" href="https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.15/ShopBill-Manual-0.5.15-Hindi.pdf">हिन्दी (PDF)</a>
-  <a class="btn alt" style="color:#0f766e;border-color:#0f766e" href="https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.15/ShopBill-Manual-0.5.15-English-Hindi.pdf">English and Hindi in one file</a></p>
-  <h2>Windows and Android</h2>
-  <p>Download the installer or the APK from the <a href="https://github.com/Abdul-Hamid-k/shopbill/releases/latest">latest release</a>. Every new shop gets a 15-day free trial.</p>
-  <p><strong>Preview:</strong> current builds are for testers. Please do not rely on them for real business records yet.</p>
-  <h2>Questions</h2>
-  <details><summary>Does it need the internet?</summary><p>Only once, to register and start the free trial, and for the occasional licence check. Making bills never needs it.</p></details>
-  <details><summary>Where is my data kept?</summary><p>On your own computer or phone, in an encrypted database. Bills, customers and prices are never sent to anyone. Backups are locked with a password you choose; a forgotten backup password cannot be recovered, so write it down.</p></details>
-  <details><summary>Does it file my GST or income tax?</summary><p>No. It keeps the records and prepares the tables and files your accountant asks for. The accountant files the return.</p></details>
-  <details><summary>Which devices does it run on?</summary><p>Windows computers and Android phones and tablets.</p></details>
-  <details><summary>Which printers?</summary><p>Bills are laid out for 58 mm and 80 mm rolls and for A4, and are printed through the printer you choose. We are testing on real printers: please tell us how it prints on yours.</p></details>
-  <details><summary>Which languages?</summary><p>English, Hindi, Marathi, Gujarati, Tamil and Telugu, in the app and on the printed bill.</p></details>
-  <details><summary>How do I get help?</summary><p>Message us on WhatsApp: <a href="https://wa.me/917999863081">+91 79998 63081</a>, or write to <a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a>.</p></details>
+</section>
+
+<section id="devices">
+  <div class="wrap">
+    <p class="eyebrow">Devices</p>
+    <h2>Windows computers, Android phones and tablets</h2>
+    <p class="lead">One app, with a layout that fits the screen. There is no iPhone, iPad or Mac version.</p>
+    <div class="devshots">
+      <figure class="shot"><img src="images/laptop-bill.jpg" width="1400" height="875" loading="lazy" alt="Computer layout of the billing page"><figcaption>Computer: menu on the left, total and payment on the right.</figcaption></figure>
+      <figure class="shot"><img src="images/tablet-bill.jpg" width="700" height="1120" loading="lazy" alt="Tablet layout of the billing page in two columns"><figcaption>Tablet size: two columns.</figcaption></figure>
+      <figure class="shot"><img src="images/shot-pay-phone.jpg" width="420" height="877" loading="lazy" alt="Phone payment page with cash, UPI, card, split and credit"><figcaption>Phone: payment.</figcaption></figure>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Device</th><th>How it looks</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>Windows computer</b></td><td>Menu on the left, keyboard shortcuts (Alt+1 to Alt+0), total and payment beside the bill.</td><td>Installer (.exe). Best for the counter with a keyboard and a printer.</td></tr>
+          <tr><td><b>Android phone</b></td><td>Bottom bar (Bill, Today, Bills, Customers, More) and a big number pad under your thumb.</td><td>APK file.</td></tr>
+          <tr><td><b>Android tablet</b></td><td>The computer layout, or two columns when held upright.</td><td>Tablet screens are tested at tablet sizes; testing on real tablets is still in progress.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2>From download to first bill in minutes</h2>
+    <ol class="steps">
+      <li><h3>Install</h3><p>Download the Windows installer or the Android file below and open it.</p></li>
+      <li><h3>Register once</h3><p>Enter your shop's details. This needs internet once and starts your 15-day free trial.</p></li>
+      <li><h3>Set up your shop</h3><p>Add your shop name, item types (garments, dress, saree and so on), your employees and an owner PIN.</p></li>
+      <li><h3>Bill</h3><p>Type the employee number, the item type number and the price. Choose how the customer pays and save.</p></li>
+      <li><h3>Check and back up</h3><p>Look at Today and Reports, record expenses, and keep a backup copy away from the device.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="downloads">
+  <div class="wrap">
+    <p class="eyebrow">Downloads and guides</p>
+    <h2>Get ShopBill</h2>
+    <p class="lead" id="dl-lead">Latest version of ShopBill for Windows and Android.</p>
+    <p class="notice"><b>Preview version.</b> Current builds are for testers. Please do not rely on them for real business records yet, and keep a backup.</p>
+    <div class="dl" id="dl-apps"></div>
+    <div id="dl-fallback" hidden><p>The list of files could not be shown here. Open the <a href="https://github.com/Abdul-Hamid-k/shopbill/releases/latest">latest release page</a> to download.</p></div>
+
+    <h3 style="margin-top:34px">How to install</h3>
+    <div class="cards">
+      <div class="card"><h3>Windows</h3><p>Run the installer. Windows may say "unknown publisher" because the installer is not code-signed yet: choose <b>More info</b>, then <b>Run anyway</b>. It adds shortcuts and opens ShopBill.</p></div>
+      <div class="card"><h3>Android</h3><p>Open the downloaded file on the phone and allow installs from this source when asked. Use the arm64 file on modern phones; use the larger one if that does not install.</p></div>
+      <div class="card"><h3>Check your download</h3><p>Each file lists a SHA-256 checksum. If you want to be sure the file is intact, compare it with the checksum shown here.</p></div>
+    </div>
+
+    <h3 style="margin-top:34px">User manual and release notes</h3>
+    <p class="meta">An illustrated step-by-step manual with real screenshots, for the computer and the phone.</p>
+    <div class="res" id="dl-docs"></div>
+    <div class="res" style="margin-top:10px">
+      <a id="notes-link" href="https://github.com/Abdul-Hamid-k/shopbill/releases">Release notes and older versions <span>GitHub</span></a>
+      <a href="#faq">Frequently asked questions <span>on this page</span></a>
+    </div>
+    <p class="meta" style="margin-top:12px">Video tutorials are not available yet.</p>
+  </div>
+</section>
+
+<section id="pricing" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">Pricing</p>
+    <h2>Simple pricing, set out line by line</h2>
+    <p class="lead">One app, one price list. The one-time fee and the renewals are separate, so you can see what you pay and when.</p>
+    <div class="price">
+      <div class="card main">
+        <h3>New shop</h3>
+        <p class="amount">₹6,000 <small>one-time fee</small></p>
+        <ul>
+          <li><b>Includes the first 12 months.</b> No monthly charge in your first year.</li>
+          <li>Start with a 15-day free trial before you decide.</li>
+          <li>Then renewals are priced as on the right.</li>
+        </ul>
+        <a class="btn" href="https://wa.me/917999863081?text=Hello%2C%20I%20want%20to%20buy%20ShopBill%20for%20my%20shop." id="buy">Message us to buy</a>
+      </div>
+      <div class="card">
+        <h3>Renewal, monthly</h3>
+        <p class="amount">₹300 <small>per month</small></p>
+        <ul>
+          <li>Keeps your licence running one month at a time.</li>
+          <li>Paying early does not lose days: a renewal is added to the end of your current period.</li>
+        </ul>
+        <a class="btn ghost" href="https://wa.me/917999863081?text=Hello%2C%20I%20want%20to%20renew%20ShopBill%20monthly.">Message us to renew</a>
+      </div>
+      <div class="card">
+        <h3>Renewal, yearly</h3>
+        <p class="amount">₹3,240 <small>per year</small></p>
+        <ul>
+          <li>12 months at ₹300, less 10% (₹3,600 − ₹360).</li>
+          <li>Best value after your first year.</li>
+        </ul>
+        <a class="btn ghost" href="https://wa.me/917999863081?text=Hello%2C%20I%20want%20to%20renew%20ShopBill%20for%20a%20year.">Message us to renew</a>
+      </div>
+    </div>
+    <p class="meta" style="margin-top:16px">If a licence runs out, ShopBill keeps working for 7 more days with a warning. After that, billing stops, but you can still open the licence, payment, backup and support screens to renew or take your data out.</p>
+    <div class="confirm"><b>Still being confirmed.</b> These points are not final, so we do not state them as terms yet:
+      <ul>
+        <li>Whether GST is added to these prices or included in them.</li>
+        <li>Refund and cancellation terms.</li>
+        <li>How payment is taken (message us and we will tell you the steps).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap" style="max-width:820px">
+    <p class="eyebrow">Questions</p>
+    <h2>Frequently asked questions</h2>
+    <details><summary>Does it need the internet?</summary><p>Only once, to register and start the free trial, and for the occasional licence check. Making bills never needs it.</p></details>
+    <details><summary>How does the free trial work?</summary><p>Every new shop gets 15 days free. After that, a licence key keeps ShopBill running (see Pricing).</p></details>
+    <details><summary>Where is my data kept?</summary><p>On your own computer or phone, in an encrypted database. Bills, customers and prices are never sent to us. Only the registration details, the licence check and, if you switch it on, crash reports leave the device.</p></details>
+    <details><summary>What if my computer or phone is lost or breaks?</summary><p>Restore your latest backup on the new device with its file and password. That is why ShopBill reminds you to keep one backup copy away from the device. A forgotten backup password cannot be recovered.</p></details>
+    <details><summary>Does it file my GST or income tax?</summary><p>No. It keeps the records and prepares the tables and files your accountant asks for. The accountant files the return.</p></details>
+    <details><summary>Which devices does it run on?</summary><p>Windows computers and Android phones and tablets. There is no iPhone, iPad or Mac version.</p></details>
+    <details><summary>Which printers work?</summary><p>Bills are laid out for 58 mm and 80 mm rolls and for A4, and are printed through the printer you choose. We are still testing on real printers: please tell us how it prints on yours.</p></details>
+    <details><summary>Is there stock and inventory?</summary><p>Yes, as a count per item type that goes down when you sell and goes up when you press Add to stock on a purchase order. There is no barcode or per-product catalogue.</p></details>
+    <details><summary>What happens when my subscription ends?</summary><p>ShopBill keeps working for 7 days with a warning. Then billing stops, but the licence, payment, backup and support screens stay open so you can renew and take your data out.</p></details>
+    <details><summary>Can I get a demo?</summary><p>The 15-day free trial is the demo: install it and try it with your own items. If you would like help getting started, message us on WhatsApp.</p></details>
+    <details><summary>How do I get help?</summary><p>Message us on WhatsApp: <a href="https://wa.me/917999863081">+91 79998 63081</a>, or write to <a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a>.</p></details>
+  </div>
+</section>
+
+<section id="support" class="alt">
+  <div class="wrap">
+    <p class="eyebrow">Trust and support</p>
+    <h2>What you can count on, and where to reach us</h2>
+    <div class="cards">
+      <div class="card"><h3>Your data stays with you</h3><p>The database on your device is encrypted. Backups are locked with your own password. The owner's pages are behind a PIN.</p></div>
+      <div class="card"><h3>Honest about its stage</h3><p>ShopBill is in preview with testers, so there are no customer reviews to show yet. We would rather have honest feedback from shops that try it.</p></div>
+      <div class="card"><h3>WhatsApp</h3><p><a href="https://wa.me/917999863081">+91 79998 63081</a><br>Message us to start, to buy or to ask for help.</p></div>
+      <div class="card"><h3>Email</h3><p><a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a><br>This contact is temporary and will change when the final name is decided.</p></div>
+    </div>
+  </div>
+</section>
 </main>
-<footer class="wrap">ShopBill &middot; <a href="https://github.com/Abdul-Hamid-k/shopbill/releases">Releases</a></footer>
+
+<footer>
+  <div class="wrap cols">
+    <div><h3>ShopBill</h3><p>Billing for textile and garment shops. Windows and Android.</p></div>
+    <div><h3>Get it</h3><ul><li><a href="#downloads">Downloads and manual</a></li><li><a href="#pricing">Pricing</a></li><li><a href="https://github.com/Abdul-Hamid-k/shopbill/releases">All releases</a></li></ul></div>
+    <div><h3>Contact</h3><ul><li><a href="https://wa.me/917999863081">WhatsApp +91 79998 63081</a></li><li><a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a></li></ul></div>
+    <div><h3>Legal</h3><p>A privacy policy and terms of use are not published yet.</p></div>
+  </div>
+</footer>
+
+<!--release-data--><script id="release-data" type="application/json">
+{
+  "version": "0.5.15",
+  "tag": "v0.5.15",
+  "date": "2026-10-20",
+  "prerelease": true,
+  "notes": "https://github.com/Abdul-Hamid-k/shopbill/releases/tag/v0.5.15",
+  "releases": "https://github.com/Abdul-Hamid-k/shopbill/releases",
+  "files": [
+    {
+      "name": "SHA256SUMS.txt",
+      "url": "https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.15/SHA256SUMS.txt",
+      "size": 583,
+      "sha256": "8bbfc5453612e42d80eca17d0fa55008b37ab2a5b923f95fe250614184f2008c",
+      "group": "checksums",
+      "title": "Checksums (SHA-256)",
+      "type": "TXT"
+    },
+    {
+      "name": "ShopBill-0.5.15-arm64.apk",
+      "url": "https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.15/ShopBill-0.5.15-arm64.apk",
+      "size": 33524641,
+      "sha256": "b25325fc611f670d1a82556f621060605b06b2e55f4335252fd4462c6101e8e8",
+      "group": "android",
+      "title": "Android (arm64, most phones and tablets)",
+      "type": "APK"
+    },
+    {
+      "name": "ShopBill-0.5.15.apk",
+      "url": "https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.15/ShopBill-0.5.15.apk",
+      "size": 93923017,
+      "sha256": "159d1630f91a653552558713f162c0eced19332e9ba8d47466def296bc94fa88",
+      "group": "android",
+      "title": "Android (any phone or tablet, larger file)",
+      "type": "APK"
+    },
+    {
+      "name": "ShopBill-Manual-0.5.15-English-Hindi.pdf",
+      "url": "https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.15/ShopBill-Manual-0.5.15-English-Hindi.pdf",
+      "size": 19236483,
+      "sha256": "a3135e8a7f0450046a100cff2a9a0eaf1d3fed9bd61009698063022c57e27091",
+      "group": "manual",
+      "title": "User manual, English and Hindi in one file",
+      "type": "PDF"
+    },
+    {
+      "name": "ShopBill-Manual-0.5.15-English.pdf",
+      "url": "https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.15/ShopBill-Manual-0.5.15-English.pdf",
+      "size": 10375227,
+      "sha256": "ade0ae59fd2150c98372fa0bcf11987261b261723733248ab6dc995aabba82a5",
+      "group": "manual",
+      "title": "User manual, English",
+      "type": "PDF"
+    },
+    {
+      "name": "ShopBill-Manual-0.5.15-Hindi.pdf",
+      "url": "https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.15/ShopBill-Manual-0.5.15-Hindi.pdf",
+      "size": 10381270,
+      "sha256": "67c2072419857d605e32977f231fcc4501b432d647bdf2949663926c1e0eed94",
+      "group": "manual",
+      "title": "User manual, Hindi (हिन्दी)",
+      "type": "PDF"
+    },
+    {
+      "name": "ShopBill-Setup-0.5.15.exe",
+      "url": "https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.15/ShopBill-Setup-0.5.15.exe",
+      "size": 17950133,
+      "sha256": "75d59123cca7dc5c3780064c361b8f8e5cb5fe1aed429abaeb7db0d7072f3b9e",
+      "group": "windows",
+      "title": "Windows installer",
+      "type": "EXE"
+    }
+  ]
+}
+</script><!--/release-data-->
+<script>
+(function () {
+  var btn = document.getElementById('menu-btn'), nav = document.getElementById('nav');
+  btn.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.addEventListener('click', function (e) { if (e.target.tagName === 'A') { nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
+
+  function size(n) { return n >= 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.round(n / 1024) + ' KB'; }
+  function el(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function when(d) { try { return new Date(d + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) { return d; } }
+
+  var data;
+  try { data = JSON.parse(document.getElementById('release-data').textContent); } catch (e) { data = null; }
+  var apps = document.getElementById('dl-apps');
+  if (!data || !data.files || !data.files.length) { document.getElementById('dl-fallback').hidden = false; return; }
+
+  var v = 'Version ' + data.version + (data.prerelease ? ' (preview)' : '') + ', released ' + when(data.date);
+  document.getElementById('dl-lead').textContent = 'Latest version of ShopBill for Windows and Android. ' + v + '.';
+  document.getElementById('hero-version').textContent = v + '. Windows and Android. Six languages.';
+  document.getElementById('notes-link').href = data.notes || data.releases;
+
+  var android = /Android/i.test(navigator.userAgent);
+  var any = data.files.filter(function (f) { return f.group === 'windows' || f.group === 'android'; });
+  any.sort(function (a, b) { var r = function (f) { return (f.group === 'android') === android ? 0 : 1; }; return r(a) - r(b) || (a.group === 'android' && b.group === 'android' ? (/arm64/.test(a.name) ? -1 : 1) : 0); });
+  any.forEach(function (f) {
+    var rec = (f.group === 'android') === android && (f.group === 'windows' || /arm64/.test(f.name));
+    var c = el('div', 'card' + (rec ? ' rec' : ''));
+    c.appendChild(el('h3', '', '<span>' + esc(f.title) + '</span>' + (rec ? '<span class="tag">For your device</span>' : '')));
+    c.appendChild(el('p', 'meta', esc(f.type) + ' file, ' + size(f.size) + '. Version ' + esc(data.version) + ', ' + when(data.date) + '.'));
+    var a = el('a', 'btn' + (rec ? '' : ' ghost'), 'Download ' + esc(f.type));
+    a.href = f.url; a.setAttribute('download', '');
+    c.appendChild(a);
+    if (f.sha256) c.appendChild(el('p', 'sha', 'SHA-256: ' + esc(f.sha256)));
+    apps.appendChild(c);
+  });
+  var docs = document.getElementById('dl-docs');
+  data.files.filter(function (f) { return f.group === 'manual' || f.group === 'checksums'; }).sort(function (a, b) { return (a.group === 'checksums') - (b.group === 'checksums') || a.title.length - b.title.length; }).forEach(function (f) {
+    var a = el('a', '', '<b>' + esc(f.title) + '</b><span>' + esc(f.type) + ', ' + size(f.size) + '</span>');
+    a.href = f.url; docs.appendChild(a);
+  });
+  var hd = document.getElementById('hero-download');
+  if (hd) hd.textContent = 'Download free for 15 days';
+})();
+</script>
 </body>
 </html>

@@ -20,4 +20,4 @@ Current builds are **preview versions** for testers. Please do not rely on a pre
 
 ## Website
 
-`index.html` is a one-page site for the app (it links to the releases above).
+`index.html` is a one-page marketing site (features, devices, downloads, pricing, FAQ, support). The version, date, file sizes, checksums and links in its Downloads section come from one block of release data inside the page. After publishing a release, run `node tools/update-website.mjs` in the private app repository to refresh that block, then commit and push this repository.
