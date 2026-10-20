@@ -161,14 +161,46 @@
   footer ul { list-style:none; padding:0; margin:0; }
   footer li { margin:5px 0; }
   .alt { background:color-mix(in srgb, var(--brand-soft) 45%, var(--bg)); }
-</style>
+
+  /* polish */
+  .icon svg { width:24px; height:24px; fill:none; stroke:var(--brand); stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
+  .btn.small { padding:8px 16px; font-size:15px; border-radius:10px; }
+  .bar .btn { margin-left:4px; }
+  @media (max-width: 860px) { .bar .btn.small { padding:7px 12px; font-size:14px; } }
+  .hero { position:relative; }
+  .hero::before, .hero::after { content:""; position:absolute; border-radius:50%; filter:blur(60px); opacity:.35; pointer-events:none; }
+  .hero::before { width:360px; height:360px; background:#e8523f; right:-80px; top:-120px; }
+  .hero::after { width:300px; height:300px; background:#22d3ee; left:-100px; bottom:-140px; opacity:.25; }
+  .hero .wrap { position:relative; z-index:1; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:22px 0 0; }
+  .chips li { background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.28); padding:5px 12px; border-radius:99px; font-size:14px; font-weight:600; }
+  .strip { background:var(--card); border-bottom:1px solid var(--line); }
+  .strip ul { list-style:none; margin:0; padding:20px 0; display:grid; grid-template-columns:repeat(auto-fit, minmax(190px,1fr)); gap:14px; }
+  .strip li { display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .strip b { font-size:26px; letter-spacing:-.02em; color:var(--brand); line-height:1.2; }
+  .strip span { color:var(--muted); font-size:14px; }
+  .card { transition: transform .2s, box-shadow .2s, border-color .2s; }
+  .cards .card:hover, .price .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--brand); }
+  .shot.win::before { content:""; display:block; height:24px; margin:-2px -2px 6px; border-radius:8px 8px 0 0; background:
+    radial-gradient(circle at 14px 12px,#ff6b6b 4.5px,transparent 5.5px),
+    radial-gradient(circle at 30px 12px,#ffd166 4.5px,transparent 5.5px),
+    radial-gradient(circle at 46px 12px,#4ade80 4.5px,transparent 5.5px); }
+  .badge { position:absolute; top:-12px; right:16px; background:var(--accent); color:#fff; font-size:12px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; padding:4px 12px; border-radius:99px; }
+  .price .card { position:relative; }
+  .good { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:6px 20px 14px; margin-top:22px; }
+  .good ul { margin:8px 0 0; padding-left:20px; color:var(--muted); }
+  .good li { margin:6px 0; }
+  .cta { background: linear-gradient(135deg, var(--hero1), var(--hero2)); color:#fff; text-align:center; padding:56px 0; }
+  .cta h2 { color:#fff; }
+  .cta p { max-width:560px; margin:0 auto 22px; opacity:.95; }
+  .cta .btns { justify-content:center; }
+  </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the content</a>
 <header class="top">
   <div class="wrap bar">
     <a class="logo" href="#top"><img src="logo-128.png" width="36" height="36" alt="">ShopBill</a>
-    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav" aria-label="Main">
       <ul>
         <li><a href="#features">Features</a></li>
@@ -180,6 +212,8 @@
         <li><a href="#support">Support</a></li>
       </ul>
     </nav>
+    <a class="btn small" href="#downloads">Download</a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
   </div>
 </header>
 
@@ -195,6 +229,7 @@
         <a class="btn light ghost" href="#features">Explore features</a>
       </div>
       <p class="small" id="hero-version">Windows and Android. Six languages.</p>
+      <ul class="chips"><li>Works offline</li><li>Windows and Android</li><li>6 languages</li><li>15-day free trial</li></ul>
     </div>
     <div class="shotstack">
       <img class="laptop" src="images/laptop-bill.jpg" width="1400" height="875" alt="ShopBill on a computer: a bill with two items and the total on the right, with cash, UPI, card, split and credit buttons">
@@ -203,18 +238,25 @@
   </div>
 </div>
 
+<div class="strip"><div class="wrap"><ul>
+  <li><b>15 days</b><span>free trial for every new shop</span></li>
+  <li><b>₹6,000</b><span>one time, first 12 months included</span></li>
+  <li><b>Offline</b><span>no internet needed to bill</span></li>
+  <li><b>6</b><span>languages, on screen and on the bill</span></li>
+</ul></div></div>
+
 <section id="overview">
   <div class="wrap">
     <p class="eyebrow">What it does for you</p>
     <h2>Built around how a counter really works</h2>
     <p class="lead">Fewer clicks while the customer waits, and clear answers at closing time.</p>
     <div class="cards">
-      <div class="card"><div class="icon" aria-hidden="true">⚡</div><h3>Quick bills</h3><p>Four boxes, all numbers: employee, item type, quantity, price. A bill takes a few key presses, and a big number pad appears on phones.</p></div>
-      <div class="card"><div class="icon" aria-hidden="true">👥</div><h3>Fair staff commission</h3><p>Each employee's commission comes from the bills, using the rates you set. Returns reduce it, and you can print a payment slip.</p></div>
-      <div class="card"><div class="icon" aria-hidden="true">📒</div><h3>Credit (udhaar) remembered</h3><p>See who owes what and since when. Take old dues while billing.</p></div>
-      <div class="card"><div class="icon" aria-hidden="true">📊</div><h3>Today at a glance</h3><p>Sales, how people paid, cash after expenses and your latest bills on one page.</p></div>
-      <div class="card"><div class="icon" aria-hidden="true">🔒</div><h3>Yours alone, even offline</h3><p>No internet needed to bill. The data stays on your device in an encrypted database, with password-protected backups.</p></div>
-      <div class="card"><div class="icon" aria-hidden="true">🗣️</div><h3>In your language</h3><p>English, Hindi, Marathi, Gujarati, Tamil and Telugu, in the app and on the printed bill.</p></div>
+      <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Quick bills</h3><p>Four boxes, all numbers: employee, item type, quantity, price. A bill takes a few key presses, and a big number pad appears on phones.</p></div>
+      <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17.5" cy="9" r="2.5"/><path d="M17.5 14c2.5 0 4 1.7 4 4.5"/></svg></div><h3>Fair staff commission</h3><p>Each employee's commission comes from the bills, using the rates you set. Returns reduce it, and you can print a payment slip.</p></div>
+      <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M9 9h6M9 13h6"/></svg></div><h3>Credit (udhaar) remembered</h3><p>See who owes what and since when. Take old dues while billing.</p></div>
+      <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div><h3>Today at a glance</h3><p>Sales, how people paid, cash after expenses and your latest bills on one page.</p></div>
+      <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Yours alone, even offline</h3><p>No internet needed to bill. The data stays on your device in an encrypted database, with password-protected backups.</p></div>
+      <div class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>In your language</h3><p>English, Hindi, Marathi, Gujarati, Tamil and Telugu, in the app and on the printed bill.</p></div>
     </div>
   </div>
 </section>
@@ -237,7 +279,7 @@
           <li>Send a bill on WhatsApp from the device.</li>
         </ul>
       </div>
-      <figure class="shot"><img src="images/laptop-bill.jpg" width="1400" height="875" loading="lazy" alt="Billing page with a bill of two dress items and total of 2,900 rupees"><figcaption>Billing on a computer.</figcaption></figure>
+      <figure class="shot win"><img src="images/laptop-bill.jpg" width="1400" height="875" loading="lazy" alt="Billing page with a bill of two dress items and total of 2,900 rupees"><figcaption>Billing on a computer.</figcaption></figure>
     </div>
 
     <div class="feature flip">
@@ -251,7 +293,7 @@
         </ul>
         <p class="meta">ShopBill keeps the records and prepares the tables. It does not file GST or income tax: your accountant does that.</p>
       </div>
-      <figure class="shot"><img src="images/laptop-today.jpg" width="1400" height="875" loading="lazy" alt="Today page with sales so far, cash, UPI, card and credit totals and the latest bills"><figcaption>Today: sales, how people paid, cash after expenses.</figcaption></figure>
+      <figure class="shot win"><img src="images/laptop-today.jpg" width="1400" height="875" loading="lazy" alt="Today page with sales so far, cash, UPI, card and credit totals and the latest bills"><figcaption>Today: sales, how people paid, cash after expenses.</figcaption></figure>
     </div>
 
     <div class="feature">
@@ -263,7 +305,7 @@
           <li>Record a payment against old dues, and take dues while billing.</li>
         </ul>
       </div>
-      <figure class="shot"><img src="images/laptop-customers.jpg" width="1400" height="875" loading="lazy" alt="Customers page showing 21,972 rupees owed by 11 customers"><figcaption>Who owes you, and since when.</figcaption></figure>
+      <figure class="shot win"><img src="images/laptop-customers.jpg" width="1400" height="875" loading="lazy" alt="Customers page showing 21,972 rupees owed by 11 customers"><figcaption>Who owes you, and since when.</figcaption></figure>
     </div>
 
     <div class="feature flip">
@@ -276,7 +318,7 @@
           <li>Mark attendance on its own page.</li>
         </ul>
       </div>
-      <figure class="shot"><img src="images/laptop-staff.jpg" width="1400" height="875" loading="lazy" alt="Staff page with each employee's sales, share of sales and commission"><figcaption>Commission worked out from the bills.</figcaption></figure>
+      <figure class="shot win"><img src="images/laptop-staff.jpg" width="1400" height="875" loading="lazy" alt="Staff page with each employee's sales, share of sales and commission"><figcaption>Commission worked out from the bills.</figcaption></figure>
     </div>
 
     <div class="feature">
@@ -291,7 +333,7 @@
         </ul>
         <p class="meta">Stock is a count per item type, and you choose which types to track. It is not a barcode or per-product inventory system.</p>
       </div>
-      <figure class="shot"><img src="images/laptop-purchases.jpg" width="1400" height="875" loading="lazy" alt="A purchase order from a supplier with stages Order Placed, Received and Stock Added"><figcaption>A purchase order, from order to stock.</figcaption></figure>
+      <figure class="shot win"><img src="images/laptop-purchases.jpg" width="1400" height="875" loading="lazy" alt="A purchase order from a supplier with stages Order Placed, Received and Stock Added"><figcaption>A purchase order, from order to stock.</figcaption></figure>
     </div>
 
     <div class="feature flip">
@@ -305,7 +347,7 @@
         </ul>
         <p class="meta">A forgotten backup password cannot be recovered, so write it down.</p>
       </div>
-      <figure class="shot"><img src="images/laptop-backup.jpg" width="1400" height="875" loading="lazy" alt="Backup and restore settings with automatic backup options and a share button"><figcaption>Backup and restore.</figcaption></figure>
+      <figure class="shot win"><img src="images/laptop-backup.jpg" width="1400" height="875" loading="lazy" alt="Backup and restore settings with automatic backup options and a share button"><figcaption>Backup and restore.</figcaption></figure>
     </div>
 
     <div class="feature">
@@ -316,7 +358,7 @@
           <li>Several colour themes, light or dark, and bigger text.</li>
         </ul>
       </div>
-      <figure class="shot"><img src="images/laptop-hindi.jpg" width="1400" height="875" loading="lazy" alt="ShopBill with the menu and the bill page in Hindi"><figcaption>The same app in Hindi.</figcaption></figure>
+      <figure class="shot win"><img src="images/laptop-hindi.jpg" width="1400" height="875" loading="lazy" alt="ShopBill with the menu and the bill page in Hindi"><figcaption>The same app in Hindi.</figcaption></figure>
     </div>
 
     <h3 style="margin-top:34px">How the pieces work together</h3>
@@ -337,7 +379,7 @@
     <h2>Windows computers, Android phones and tablets</h2>
     <p class="lead">One app, with a layout that fits the screen. There is no iPhone, iPad or Mac version.</p>
     <div class="devshots">
-      <figure class="shot"><img src="images/laptop-bill.jpg" width="1400" height="875" loading="lazy" alt="Computer layout of the billing page"><figcaption>Computer: menu on the left, total and payment on the right.</figcaption></figure>
+      <figure class="shot win"><img src="images/laptop-bill.jpg" width="1400" height="875" loading="lazy" alt="Computer layout of the billing page"><figcaption>Computer: menu on the left, total and payment on the right.</figcaption></figure>
       <figure class="shot"><img src="images/tablet-bill.jpg" width="700" height="1120" loading="lazy" alt="Tablet layout of the billing page in two columns"><figcaption>Tablet size: two columns.</figcaption></figure>
       <figure class="shot"><img src="images/shot-pay-phone.jpg" width="420" height="877" loading="lazy" alt="Phone payment page with cash, UPI, card, split and credit"><figcaption>Phone: payment.</figcaption></figure>
     </div>
@@ -381,8 +423,7 @@
     <div class="cards">
       <div class="card"><h3>Windows</h3><p>Run the installer. Windows may say "unknown publisher" because the installer is not code-signed yet: choose <b>More info</b>, then <b>Run anyway</b>. It adds shortcuts and opens ShopBill.</p></div>
       <div class="card"><h3>Android</h3><p>Open the downloaded file on the phone and allow installs from this source when asked. Use the arm64 file on modern phones; use the larger one if that does not install.</p></div>
-      <div class="card"><h3>Check your download</h3><p>Each file lists a SHA-256 checksum. If you want to be sure the file is intact, compare it with the checksum shown here.</p></div>
-    </div>
+          </div>
 
     <h3 style="margin-top:34px">User manual and release notes</h3>
     <p class="meta">An illustrated step-by-step manual with real screenshots, for the computer and the phone.</p>
@@ -401,7 +442,7 @@
     <h2>Simple pricing, set out line by line</h2>
     <p class="lead">One app, one price list. The one-time fee and the renewals are separate, so you can see what you pay and when.</p>
     <div class="price">
-      <div class="card main">
+      <div class="card main"><span class="badge">First year included</span>
         <h3>New shop</h3>
         <p class="amount">₹6,000 <small>one-time fee</small></p>
         <ul>
@@ -409,7 +450,7 @@
           <li>Start with a 15-day free trial before you decide.</li>
           <li>Then renewals are priced as on the right.</li>
         </ul>
-        <a class="btn" href="https://wa.me/917999863081?text=Hello%2C%20I%20want%20to%20buy%20ShopBill%20for%20my%20shop." id="buy">Message us to buy</a>
+        <a class="btn" href="#downloads">Download and start free</a>
       </div>
       <div class="card">
         <h3>Renewal, monthly</h3>
@@ -418,18 +459,19 @@
           <li>Keeps your licence running one month at a time.</li>
           <li>Paying early does not lose days: a renewal is added to the end of your current period.</li>
         </ul>
-        <a class="btn ghost" href="https://wa.me/917999863081?text=Hello%2C%20I%20want%20to%20renew%20ShopBill%20monthly.">Message us to renew</a>
+        
       </div>
       <div class="card">
-        <h3>Renewal, yearly</h3>
+        <span class="badge">Best value · save ₹360</span><h3>Renewal, yearly</h3>
         <p class="amount">₹3,240 <small>per year</small></p>
         <ul>
           <li>12 months at ₹300, less 10% (₹3,600 − ₹360).</li>
           <li>Best value after your first year.</li>
         </ul>
-        <a class="btn ghost" href="https://wa.me/917999863081?text=Hello%2C%20I%20want%20to%20renew%20ShopBill%20for%20a%20year.">Message us to renew</a>
+        
       </div>
     </div>
+    <div class="good"><h3 style="margin-top:14px">Good to know</h3><ul><li><b>Pay in the app.</b> Open ShopBill, go to <b>Settings</b>, then <b>Licence</b>, choose your plan and pay by UPI from there.</li><li><b>GST.</b> Any GST is shown on the payment screen as its own line, before you pay.</li><li><b>Refunds.</b> Ask us within 7 days of paying: message us on WhatsApp.</li></ul></div>
     <p class="meta" style="margin-top:16px">If a licence runs out, ShopBill keeps working for 7 more days with a warning. After that, billing stops, but you can still open the licence, payment, backup and support screens to renew or take your data out.</p>
     
   </div>
@@ -440,6 +482,8 @@
     <p class="eyebrow">Questions</p>
     <h2>Frequently asked questions</h2>
     <details><summary>Does it need the internet?</summary><p>Only once, to register and start the free trial, and for the occasional licence check. Making bills never needs it.</p></details>
+    <details><summary>How do I pay?</summary><p>Inside the app: Settings, then Licence. Choose a plan and pay by UPI. If anything is unclear, message us on WhatsApp.</p></details>
+    <details><summary>Can I get a refund?</summary><p>Ask us within 7 days of paying. Message us on WhatsApp at <a href="https://wa.me/917999863081">+91 79998 63081</a>.</p></details>
     <details><summary>How does the free trial work?</summary><p>Every new shop gets 15 days free. After that, a licence key keeps ShopBill running (see Pricing).</p></details>
     <details><summary>Where is my data kept?</summary><p>On your own computer or phone, in an encrypted database. Bills, customers and prices are never sent to us. Only the registration details, the licence check and, if you switch it on, crash reports leave the device.</p></details>
     <details><summary>What if my computer or phone is lost or breaks?</summary><p>Restore your latest backup on the new device with its file and password. That is why ShopBill reminds you to keep one backup copy away from the device. A forgotten backup password cannot be recovered.</p></details>
@@ -459,11 +503,17 @@
     <h2>What you can count on, and where to reach us</h2>
     <div class="cards">
       <div class="card"><h3>Your data stays with you</h3><p>The database on your device is encrypted. Backups are locked with your own password. The owner's pages are behind a PIN.</p></div>
+      <div class="card" id="privacy"><h3>Your privacy</h3><p>When you register, your name, shop name and mobile number (and your email and town, if you add them) are sent to the ShopBill licence server to start your trial and check your licence. You agree to this in the app when you register. Your bills, customers, prices and staff never leave your device. Crash reports are off unless you switch them on.</p></div>
       <div class="card"><h3>WhatsApp</h3><p><a href="https://wa.me/917999863081">+91 79998 63081</a><br>Message us to start, to buy or to ask for help.</p></div>
       <div class="card"><h3>Email</h3><p><a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a><br>Write to us any time.</p></div>
     </div>
   </div>
 </section>
+<section class="cta"><div class="wrap">
+  <h2>Try ShopBill free for 15 days</h2>
+  <p>Install it, add your items and employees, and make your first bill today.</p>
+  <div class="btns"><a class="btn light" href="#downloads">Download now</a><a class="btn light ghost" href="https://wa.me/917999863081?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20ShopBill.">Ask us on WhatsApp</a></div>
+</div></section>
 </main>
 
 <footer>
@@ -471,7 +521,8 @@
     <div><h3>ShopBill</h3><p>Billing for textile and garment shops. Windows and Android.</p></div>
     <div><h3>Get it</h3><ul><li><a href="#downloads">Downloads and manual</a></li><li><a href="#pricing">Pricing</a></li><li><a href="https://github.com/Abdul-Hamid-k/shopbill/releases">All releases</a></li></ul></div>
     <div><h3>Contact</h3><ul><li><a href="https://wa.me/917999863081">WhatsApp +91 79998 63081</a></li><li><a href="mailto:Abdulhamidk0172@gmail.com">Abdulhamidk0172@gmail.com</a></li></ul></div>
-      </div>
+    <div><h3>Privacy</h3><p><a href="#privacy">How your data is handled</a></p></div>
+  </div>
 </footer>
 
 <!--release-data--><script id="release-data" type="application/json">
@@ -584,11 +635,10 @@
     var a = el('a', 'btn' + (rec ? '' : ' ghost'), 'Download ' + esc(f.type));
     a.href = f.url; a.setAttribute('download', '');
     c.appendChild(a);
-    if (f.sha256) c.appendChild(el('p', 'sha', 'SHA-256: ' + esc(f.sha256)));
     apps.appendChild(c);
   });
   var docs = document.getElementById('dl-docs');
-  data.files.filter(function (f) { return f.group === 'manual' || f.group === 'checksums'; }).sort(function (a, b) { return (a.group === 'checksums') - (b.group === 'checksums') || a.title.length - b.title.length; }).forEach(function (f) {
+  data.files.filter(function (f) { return f.group === 'manual'; }).sort(function (a, b) { return a.title.length - b.title.length; }).forEach(function (f) {
     var a = el('a', '', '<b>' + esc(f.title) + '</b><span>' + esc(f.type) + ', ' + size(f.size) + '</span>');
     a.href = f.url; docs.appendChild(a);
   });
