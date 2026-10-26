@@ -20,4 +20,4 @@ Current builds are **preview versions** for testers. Please do not rely on a pre
 
 ## Website
 
-This repository holds the **built** marketing site (`index.html` and its images), copied here from the private source repository `shopbill-web`. Do not edit the files here by hand and never add source code: change the source, run `npm run publish-site` there, then commit and push this repository.
+The website (with the privacy policy and the terms of use) is at https://shopbill-gamma.vercel.app. It is not kept in this repository: this repository holds only the downloads (Releases) and this page. Never add source code here.
