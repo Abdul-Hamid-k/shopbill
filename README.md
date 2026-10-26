@@ -6,7 +6,7 @@ This repository only holds the **website and the downloads**. Get the latest ver
 
 ## User manual
 
-Illustrated manual (real screenshots, computer and phone): [English](https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.19/ShopBill-Manual-0.5.19-English.pdf), [हिन्दी](https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.19/ShopBill-Manual-0.5.19-Hindi.pdf), [both in one file](https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.19/ShopBill-Manual-0.5.19-English-Hindi.pdf).
+Illustrated manual (real screenshots, computer and phone): [English](https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.20/ShopBill-Manual-0.5.20-English.pdf), [हिन्दी](https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.20/ShopBill-Manual-0.5.20-Hindi.pdf), [both in one file](https://github.com/Abdul-Hamid-k/shopbill/releases/download/v0.5.20/ShopBill-Manual-0.5.20-English-Hindi.pdf).
 
 ## Install
 
