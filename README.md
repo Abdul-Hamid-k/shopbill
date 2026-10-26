@@ -20,4 +20,4 @@ Current builds are **preview versions** for testers. Please do not rely on a pre
 
 ## Website
 
-The website (with the privacy policy and the terms of use) is at https://shopbill-gamma.vercel.app. It is not kept in this repository: this repository holds only the downloads (Releases) and this page. Never add source code here.
+The website (with the privacy policy and the terms of use) is at https://shopbillapp.vercel.app. It is not kept in this repository: this repository holds only the downloads (Releases) and this page. Never add source code here.
