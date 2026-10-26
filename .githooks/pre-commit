@@ -1,0 +1,25 @@
+#!/bin/sh
+# Blocks a commit that adds a secret: private keys, key stores, .env files and well-known token shapes.
+# Turn it on once in each repository:   git config core.hooksPath .githooks
+# It only reads the lines being added. A real false alarm can be committed with: SKIP_SECRET_SCAN=1 git commit ...
+[ -n "$SKIP_SECRET_SCAN" ] && exit 0
+
+# Files that must never be committed.
+bad_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '(^|/)(\.env(\..*)?|key\.properties|.*\.(jks|keystore|pem|p12|pfx))$' | grep -v -E '\.env\.example$')
+if [ -n "$bad_files" ]; then
+  echo "Commit blocked: these files look like secrets and must stay out of git:"
+  echo "$bad_files" | sed 's/^/  /'
+  exit 1
+fi
+
+# Lines being added (not removed, not file headers).
+added=$(git diff --cached -U0 --no-color | grep -E '^\+[^+]' )
+hits=$(printf '%s\n' "$added" | grep -n -E -e '-----BEGIN [A-Z ]*PRIVATE KEY-----' -e 'AKIA[0-9A-Z]{16}' -e 'gh[pousr]_[A-Za-z0-9]{30,}' -e 'github_pat_[A-Za-z0-9_]{30,}' -e '(sk|rk)_live_[A-Za-z0-9]{16,}' -e 'rzp_live_[A-Za-z0-9]{8,}' -e 're_[A-Za-z0-9]{24,}' -e 'xox[abp]-[A-Za-z0-9-]{20,}' -e 'AIza[0-9A-Za-z_-]{35}' )
+if [ -n "$hits" ]; then
+  echo "Commit blocked: a line being added looks like a secret (key, token or password)."
+  # Show only the line numbers and the kind of match, never the secret itself.
+  echo "$hits" | cut -d: -f1 | sed 's/^/  added line #/'
+  echo "If it is a harmless test value, commit with SKIP_SECRET_SCAN=1 once."
+  exit 1
+fi
+exit 0
