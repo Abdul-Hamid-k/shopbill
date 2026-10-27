@@ -1,6 +1,6 @@
 # ShopBill
 
-**ShopBill** is a fast billing app for small shops (made first for textile and garment shops), for Windows and Android. Type a few numbers to make a bill: who sold it, what it was, how much. It works out every employee's commission from the bills, keeps customer credit (udhaar), expenses and reports, prints bills, and works fully offline. The data on the device is encrypted. Available in English, Hindi, Marathi, Gujarati, Tamil and Telugu.
+**ShopBill** is a fast billing app for small shops (for any shop: you make your own categories), for Windows and Android. Type a few numbers to make a bill: who sold it, what it was, how much. It works out every employee's commission from the bills, keeps customer credit (udhaar), expenses and reports, prints bills, and works fully offline. The data on the device is encrypted. Available in English, Hindi, Marathi, Gujarati, Tamil and Telugu.
 
 This repository only holds the **website and the downloads**. Get the latest version from the [Releases page](../../releases).
 
